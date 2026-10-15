@@ -1,0 +1,1201 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><meta charset="utf-8">
+<title>El Rosal en Cifras</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portal de información estadística de la Alcaldía Municipal de El Rosal (Cundinamarca) – Plan Estadístico Municipal 2026-2027">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: menú lateral retráctil (rail de iconos al recogerlo) + barra superior + contenido; inicio con titular editorial y tarjetas que giran; tableros con paleta orgánica. Rejilla 4/8 px. */
+:root{
+  --bg:#FFFFFF; --s:#FFFFFF; --sunk:#F6F8F3; --hover:#F1F5EC; --line:#E4E9DF; --line2:#D6DDCF;
+  --ink:#1C2118; --mu:#525D4B; --fa:#8A9482;
+  --g900:#1E3A12; --g800:#27501A; --g700:#2F6320; --g600:#3D7A26; --g500:#5A9E2F; --g300:#A3D06A; --g100:#EAF4DE; --g50:#F5FAEF;
+  --btn:#2F6320; --btn-fg:#FFFFFF; --accent:#3D7A26; --sun:#F2B705; --sun-ink:#1C2118;
+  --c1:#4E7D2F; --c2:#C0643A; --c3:#D4A23C; --c4:#4F8A83; --c5:#8C5A6B; --c6:#5B7FA6; --c7:#8A9A3B; --c8:#B98A5E; --track:#ECE6DA; --grid:#EEF1EA;
+  --ok:#2F6320; --ok-bg:#EAF4DE; --warn:#8A5D00; --warn-bg:#FBF1D6; --bad:#A63E24; --bad-bg:#F8E5DE; --info:#2C6661; --info-bg:#E3F0EE;
+  --back:#2F6320; --back-fg:#FFFFFF; --back-mu:#E2EFD3; --back-btn:#A3D06A; --back-btn-fg:#1E3A12;
+  --shadow:0 1px 2px rgba(30,58,18,.05); --shadow-lg:0 1px 2px rgba(30,58,18,.04),0 18px 40px -24px rgba(30,58,18,.25);
+  --f:"Plus Jakarta Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; --f-serif:"Instrument Serif",Georgia,serif; --f-mono:"Geist Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1); --t:200ms; --side:256px; color-scheme:light;
+}
+
+:root.dark{
+  --bg:#10150E; --s:#161C13; --sunk:#1A2117; --hover:#20281C; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --ink:#ECF1E6; --mu:#B5C0AC; --fa:#86917E;
+  --g100:#24331C; --g50:#1A2316; --btn:#A3D06A; --btn-fg:#14260B; --accent:#A3D06A; --sun-ink:#1C2118;
+  --c1:#82B85D; --c2:#E28C64; --c3:#E8C064; --c4:#76B5AD; --c5:#BC8899; --c6:#89A9CE; --c7:#B6C468; --c8:#D5AD84; --track:#2A3125; --grid:#20271C;
+  --ok:#A3D06A; --ok-bg:#24331C; --warn:#E8C064; --warn-bg:#352B12; --bad:#EE9A80; --bad-bg:#3A1F18; --info:#86C9C1; --info-bg:#173230;
+  --back:#24401A; --back-fg:#F2F7EC; --back-mu:#CFE0BE; --back-btn:#A3D06A; --back-btn-fg:#14260B;
+  --shadow:0 1px 2px rgba(0,0,0,.3); --shadow-lg:0 1px 2px rgba(0,0,0,.3),0 18px 40px -20px rgba(0,0,0,.6); color-scheme:dark}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.025em;text-wrap:balance}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.mono{font-family:var(--f-mono);font-size:12px}
+td.mono{white-space:nowrap}
+.num,td.num{font-variant-numeric:tabular-nums}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+em.serif,.serif{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--accent)}
+
+/* Estructura */
+.shell{display:grid;grid-template-columns:var(--side) minmax(0,1fr);min-height:100vh;transition:grid-template-columns 260ms var(--ease)}
+.shell.mini{--side:76px}
+.side{position:sticky;top:0;height:100vh;background:var(--s);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:24px;padding:20px 14px calc(16px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));z-index:30;overflow:visible}
+.brand{display:flex;align-items:center;gap:12px;padding:0 4px;min-height:40px;text-decoration:none;color:inherit}
+.logo{width:40px;height:40px;flex:none;border-radius:11px;background:var(--g700);display:grid;place-items:center}
+.brand .bt{min-width:0;overflow:hidden;white-space:nowrap}
+.brand b{display:block;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.brand small{font-size:12px;color:var(--mu)}
+.tog{position:absolute;right:-13px;top:28px;width:26px;height:26px;border-radius:50%;background:var(--s);border:1px solid var(--line2);display:grid;place-items:center;color:var(--mu);cursor:pointer;box-shadow:var(--shadow);transition:transform var(--t) var(--ease),color var(--t) var(--ease)}
+.tog:hover{color:var(--ink);transform:scale(1.08)}
+.tog svg{transition:transform 260ms var(--ease)}
+.shell:not(.mini) .tog svg{transform:rotate(180deg)}
+.grp{display:flex;flex-direction:column;gap:2px}
+.grp h6{margin:0;font-size:11px;font-weight:600;color:var(--fa);padding:0 10px 8px;letter-spacing:.08em;white-space:nowrap;overflow:hidden}
+.it{position:relative;display:flex;align-items:center;gap:12px;height:40px;padding:0 10px;border-radius:10px;color:var(--mu);font-weight:500;font-size:14px;text-decoration:none;white-space:nowrap;transition:background var(--t) var(--ease),color var(--t) var(--ease)}
+.it svg{flex:none}
+.it:hover{background:var(--hover);color:var(--ink)}
+.it:active{transform:scale(.98)}
+.it[aria-current="page"]{background:var(--g100);color:var(--ink);font-weight:600}
+.it[aria-current="page"] svg{color:var(--accent)}
+.it .lbl{overflow:hidden;text-overflow:ellipsis}
+.it .n{margin-left:auto;font-size:12px;color:var(--fa);font-variant-numeric:tabular-nums}
+.it .bd{margin-left:auto;background:var(--sun);color:var(--sun-ink);font-size:11px;font-weight:700;border-radius:99px;min-width:20px;height:20px;padding:0 6px;display:grid;place-items:center}
+.vbox{margin-top:auto;display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--g50)}
+.vbox small{font-size:11px;font-weight:600;color:var(--mu);letter-spacing:.06em;white-space:nowrap}
+.vseg{display:flex;padding:3px;border-radius:9px;background:var(--s);border:1px solid var(--line2)}
+.vseg button{flex:1;height:30px;border:0;border-radius:7px;background:transparent;font-size:12px;font-weight:600;color:var(--mu);cursor:pointer;transition:background var(--t) var(--ease),color var(--t) var(--ease)}
+.vseg button[aria-pressed="true"]{background:var(--btn);color:var(--btn-fg)}
+.vmini{display:none;margin-top:auto;width:44px;height:44px;border-radius:11px;border:1px solid var(--line2);background:var(--g50);color:var(--accent);place-items:center;cursor:pointer}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mu);padding:0 6px;white-space:nowrap;overflow:hidden}
+.status i{width:7px;height:7px;flex:none;border-radius:50%;background:var(--fa)}
+.status.vivo i{background:var(--ok);box-shadow:0 0 0 3px var(--ok-bg)}
+.status.estatico i{background:var(--sun)}
+/* Rail recogido */
+.shell.mini .side{padding-left:16px;padding-right:16px;align-items:center}
+.shell.mini .brand .bt,.shell.mini .grp h6,.shell.mini .it .lbl,.shell.mini .it .n,.shell.mini .vbox,.shell.mini .status span{display:none}
+.shell.mini .grp{align-items:center}
+.shell.mini .grp+.grp{border-top:1px solid var(--line);padding-top:12px}
+.shell.mini .it{width:44px;height:44px;padding:0;justify-content:center}
+.shell.mini .it .bd{position:absolute;top:6px;right:6px;min-width:8px;width:8px;height:8px;padding:0;font-size:0;box-shadow:0 0 0 2px var(--s)}
+.shell.mini .vmini{display:grid}
+.shell.mini .status{justify-content:center;padding:0}
+
+.main{min-width:0;display:flex;flex-direction:column}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;height:64px;display:flex;align-items:center;gap:16px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));background:color-mix(in srgb,var(--s) 86%,transparent);backdrop-filter:saturate(1.3) blur(12px);-webkit-backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--line)}
+.themeb{width:38px;height:38px;flex:none;border-radius:10px;border:1px solid var(--line2);background:var(--s);color:var(--mu);display:grid;place-items:center;cursor:pointer;transition:color var(--t) var(--ease),transform var(--t) var(--ease)}
+.themeb:hover{color:var(--ink);transform:scale(1.04)}.themeb:active{transform:scale(.96)}
+.burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--line2);background:var(--s);place-items:center;cursor:pointer}
+.crumb{font-size:13px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.crumb b{color:var(--ink);font-weight:600}
+.k{margin-left:auto;display:flex;align-items:center;gap:8px;width:min(320px,40vw);height:38px;border:1px solid var(--line2);border-radius:10px;padding:0 12px;background:var(--s);transition:border-color var(--t) var(--ease),box-shadow var(--t) var(--ease)}
+.k:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--g100)}
+.k svg{flex:none;color:var(--fa)}
+.k input{border:0;outline:0;background:transparent;min-width:0;flex:1;font-size:13px}
+.k kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line2);border-radius:5px;padding:1px 6px;color:var(--mu)}
+.me{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mu);white-space:nowrap}
+.me img{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1px var(--line2)}
+.content{padding:32px max(24px,env(safe-area-inset-right,0px)) 64px max(24px,env(safe-area-inset-left,0px));max-width:1320px;width:100%}
+section.view{display:flex;flex-direction:column;gap:24px;animation:rise 260ms var(--ease) both}
+@keyframes rise{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.head h2{font-size:36px;font-weight:800;letter-spacing:-.04em;margin-top:6px}
+.head p{margin:8px 0 0;color:var(--mu);max-width:68ch;font-size:15px}
+footer{margin-top:auto;border-top:1px solid var(--line);padding:20px max(24px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(24px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:8px 24px;font-size:12px;color:var(--mu)}
+
+/* Inicio */
+.hero{position:relative;overflow:hidden;margin:-32px -24px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--g50),var(--bg) 88%)}
+.hero svg.topo{position:absolute;right:-180px;top:-40px;width:880px;height:560px;pointer-events:none}
+.hero .in{position:relative;padding:72px 48px 64px;max-width:820px}
+.tag{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 6px;border-radius:99px;background:var(--s);border:1px solid var(--line2);font-size:13px;font-weight:500;color:var(--mu)}
+.tag i{font-style:normal;background:var(--btn);color:var(--btn-fg);border-radius:99px;padding:3px 10px;font-size:11px;font-weight:700}
+.hero h1{font-size:clamp(36px,5.2vw,64px);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin-top:24px}
+.hero h1 em{font-family:var(--f-serif);font-weight:400;font-style:italic;letter-spacing:-.015em;color:var(--accent)}
+.lead{font-size:18px;color:var(--mu);margin:20px 0 0;max-width:560px;line-height:1.55}
+.sb{margin-top:32px;display:flex;align-items:center;gap:12px;max-width:620px;height:60px;background:var(--s);border:1px solid var(--line2);border-radius:16px;padding:0 8px 0 18px;box-shadow:var(--shadow-lg);transition:border-color var(--t) var(--ease)}
+.sb:focus-within{border-color:var(--accent)}
+.sb svg{flex:none;color:var(--fa)}
+.sb input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:13px;color:var(--mu);align-items:center}
+.chips button{border:1px solid var(--line2);background:var(--s);border-radius:99px;padding:6px 12px;color:var(--ink);font-weight:500;font-size:13px;cursor:pointer;transition:border-color var(--t) var(--ease),transform var(--t) var(--ease)}
+.chips button:hover{border-color:var(--accent)}
+.chips button:active{transform:scale(.97)}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sh h2{font-size:28px;font-weight:800;letter-spacing:-.03em}
+.sh p{color:var(--mu);margin:6px 0 0;font-size:15px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.fc{perspective:1400px;height:330px;cursor:pointer;border:0;padding:0;background:none;text-align:center;color:inherit;border-radius:18px}
+.fc .inr{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 700ms var(--ease)}
+@media (hover:hover){.fc:hover .inr{transform:rotateY(180deg)}}
+.fc:focus-visible .inr,.fc.on .inr{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
+.front{background:var(--s);border:1px solid var(--line);box-shadow:var(--shadow-lg);gap:18px}
+.front svg{width:180px;height:160px;max-width:100%}
+.front b{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.front small{font-size:13px;color:var(--mu);margin-top:-12px;font-variant-numeric:tabular-nums}
+.back{transform:rotateY(180deg);background:var(--back);color:var(--back-fg);gap:16px;padding:32px;background-image:radial-gradient(120% 80% at 100% 0%,rgba(163,208,106,.32),transparent 60%)}
+.back .num{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--g300)}
+.back b{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.back p{margin:0;font-size:15px;line-height:1.6;color:var(--back-mu);max-width:300px}
+.back .ex{height:42px;padding:0 18px;border-radius:10px;background:var(--back-btn);color:var(--back-btn-fg);font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--s)}
+.st{padding:24px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:6px;min-width:0}
+.st:first-child{border-left:0}
+.st b{font-size:42px;font-weight:800;letter-spacing:-.05em;font-variant-numeric:tabular-nums;line-height:1;color:var(--accent)}
+.st b span{font-size:20px;color:var(--fa)}
+.st span{font-size:14px;color:var(--mu)}
+.st small{font-size:12px;color:var(--fa);margin-top:6px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:28px 1fr;gap:12px;counter-increment:s;color:var(--mu)}
+.steps li b{color:var(--ink);font-weight:600}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:99px;background:var(--g100);color:var(--accent);font-weight:700;font-size:13px;display:grid;place-items:center}
+.feed{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.feed li{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:13px}
+.feed li:first-child{border-top:0}
+.feed time{color:var(--fa);font-size:12px;flex:none;width:76px;font-family:var(--f-mono)}
+
+/* Paneles, filtros y tablas */
+.panel{background:var(--s);border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:18px;min-width:0;box-shadow:var(--shadow);position:relative}
+.panel h3{font-size:16px;font-weight:700;letter-spacing:-.02em}
+.panel .s{font-size:12px;color:var(--mu);margin-top:3px}
+.pt{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filters input,.filters select{height:38px;padding:0 12px;border:1px solid var(--line2);border-radius:10px;background:var(--s);max-width:100%;transition:border-color var(--t) var(--ease),box-shadow var(--t) var(--ease)}
+.filters input:focus,.filters select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--g100)}
+.filters input[type=search]{flex:1 1 240px;min-width:0}
+.seg{display:inline-flex;padding:3px;gap:2px;border:1px solid var(--line2);border-radius:10px;background:var(--g50)}
+.seg button{border:0;background:transparent;height:30px;padding:0 12px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600;color:var(--mu);transition:background var(--t) var(--ease),color var(--t) var(--ease)}
+.seg button[aria-pressed="true"]{background:var(--s);color:var(--ink);box-shadow:var(--shadow),0 0 0 1px var(--line)}
+.count{font-size:12px;color:var(--mu);margin-left:auto;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto;background:var(--s);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{text-align:left;font-weight:600;font-size:12px;color:var(--mu);padding:12px 16px;border-bottom:1px solid var(--line);background:var(--sunk);white-space:nowrap}
+td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr{transition:background var(--t) var(--ease)}
+tbody tr.click{cursor:pointer}
+tbody tr.click:hover td{background:var(--hover)}
+td .sub{display:block;color:var(--mu);font-size:12px;margin-top:2px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 9px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap;background:var(--sunk);color:var(--mu)}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.warn{background:var(--warn-bg);color:var(--warn)}.pill.bad{background:var(--bad-bg);color:var(--bad)}.pill.info{background:var(--info-bg);color:var(--info)}
+.ods{display:inline-grid;place-items:center;min-width:24px;height:20px;padding:0 4px;border-radius:5px;color:#fff;font-weight:700;font-size:11px}
+.prog{display:flex;align-items:center;gap:8px;min-width:120px}
+.prog .track{flex:1;height:6px;border-radius:99px;background:var(--track);overflow:hidden}
+.prog .track i{display:block;height:100%;border-radius:99px}
+.prog small{font-variant-numeric:tabular-nums;color:var(--mu);width:40px;text-align:right;font-size:12px}
+.pend{color:var(--warn);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:38px;padding:0 16px;border-radius:10px;border:1px solid var(--line2);background:var(--s);cursor:pointer;font-weight:600;text-decoration:none;color:var(--ink);font-size:13px;white-space:nowrap;transition:transform var(--t) var(--ease),background var(--t) var(--ease),border-color var(--t) var(--ease)}
+.btn:hover{background:var(--hover);transform:scale(1.01);color:var(--ink)}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--btn);border-color:var(--btn);color:var(--btn-fg)}
+.btn.primary:hover{filter:brightness(1.08);background:var(--btn);color:var(--btn-fg)}
+.btn.ghost{border-color:transparent;background:transparent}
+.btn.sm{height:30px;padding:0 12px;font-size:12px}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+/* Tableros */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.kpi{gap:10px;padding:20px}
+.kpi .l{font-size:13px;color:var(--mu);font-weight:500}
+.kpi .v{font-size:34px;font-weight:800;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:15px;color:var(--fa);font-weight:600;letter-spacing:0}
+.kpi .f{font-size:12px;color:var(--mu)}
+.segbar{display:flex;height:8px;border-radius:99px;overflow:hidden;gap:2px;background:var(--track)}
+.segbar i{display:block;height:100%}
+.g2{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:16px}
+.pa3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1.1fr);gap:28px}
+.g3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart text{fill:var(--fa);font-family:var(--f);font-size:11px;font-variant-numeric:tabular-nums}
+.chart .lb{fill:var(--ink);font-weight:700}
+.chart [data-tip]{transition:opacity var(--t) var(--ease)}
+.chart svg:hover [data-tip]{opacity:.5}
+.chart svg:hover [data-tip]:hover{opacity:1}
+.src{font-size:12px;color:var(--fa);border-top:1px solid var(--line);padding-top:12px;margin:0}
+.leg{display:flex;flex-direction:column;gap:10px;font-size:13px}
+.leg>div{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center}
+.leg i{width:10px;height:10px;border-radius:3px}
+.leg b{font-variant-numeric:tabular-nums}
+.leg b span{color:var(--fa);font-weight:500}
+.hbars{display:flex;flex-direction:column;gap:11px;font-size:13px}
+.hb{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr) 32px;gap:12px;align-items:center}
+.hb span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hb .tr{height:10px;border-radius:99px;background:var(--track);overflow:hidden;position:relative}
+.hb .tr i{position:absolute;left:0;top:0;bottom:0;border-radius:99px}
+.hb b{text-align:right;font-variant-numeric:tabular-nums}
+.stack{display:flex;height:40px;border-radius:10px;overflow:hidden;gap:3px}
+.stack i{display:block;height:100%;transition:filter var(--t) var(--ease)}
+.stack i:hover{filter:brightness(1.1)}
+.donutrow{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.donutrow .leg{flex:1;min-width:180px}
+.gantt{display:flex;flex-direction:column;gap:9px;font-size:12px;min-width:640px}
+.gr{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:center}
+.gr .n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gr .n code{font-family:var(--f-mono);font-size:11px;color:var(--mu);margin-right:6px}
+.ln{position:relative;height:14px}
+.ln::before{content:"";position:absolute;left:0;right:0;top:7px;border-top:1px dashed var(--line2)}
+.ln i{position:absolute;top:1px;height:12px;border-radius:99px}
+.mo{display:grid;grid-template-columns:repeat(9,1fr);font-size:11px;color:var(--fa);font-weight:600}
+.dash{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px;align-items:start}
+.inspector{position:sticky;top:80px;display:flex;flex-direction:column;gap:16px}
+.qa{display:flex;flex-direction:column;gap:4px}
+.qa button,.qa a{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;height:38px;padding:0 12px;border:0;border-radius:10px;background:transparent;cursor:pointer;color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;text-align:left;transition:background var(--t) var(--ease)}
+.qa button:hover,.qa a:hover{background:var(--hover)}
+.qa button:disabled{opacity:.45;cursor:not-allowed}
+.qa kbd{font-family:var(--f-mono);font-size:11px;color:var(--mu)}
+.stat-row{display:flex;justify-content:space-between;font-size:13px;padding:9px 0;border-top:1px solid var(--line)}
+.stat-row:first-child{border-top:0}
+.stat-row b{font-variant-numeric:tabular-nums}
+
+/* Formularios */
+form.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+form.grid .full{grid-column:1/-1}
+label.f{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600}
+label.f input,label.f select,label.f textarea{height:40px;padding:0 12px;border:1px solid var(--line2);border-radius:10px;background:var(--s);font-weight:400;font-size:14px;width:100%;transition:border-color var(--t) var(--ease),box-shadow var(--t) var(--ease)}
+label.f input[type=file]{height:auto;padding:8px 12px}
+label.f input:focus,label.f select:focus,label.f textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--g100)}
+label.f textarea{height:auto;min-height:88px;padding:10px 12px;resize:vertical}
+label.f small{color:var(--mu);font-weight:400;font-size:12px}
+.tipos{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.tipo{display:flex;flex-direction:column;gap:4px;text-align:left;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--s);cursor:pointer;transition:transform var(--t) var(--ease),border-color var(--t) var(--ease)}
+.tipo:hover{border-color:var(--line2);transform:scale(1.01)}
+.tipo:active{transform:scale(.98)}
+.tipo b{font-weight:700;font-size:14px}
+.tipo span{font-size:12px;color:var(--mu)}
+.tipo[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--g100)}
+.note{padding:12px 16px;border-radius:10px;background:var(--warn-bg);font-size:13px}
+.note.info{background:var(--info-bg)}
+.empty{padding:32px 24px;text-align:center;color:var(--mu);border:1px dashed var(--line2);border-radius:16px;background:var(--s);font-size:13px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.dfc{height:210px}
+.dfront{align-items:flex-start;justify-content:flex-start;text-align:left;gap:10px;padding:18px}
+.dtop{display:flex;justify-content:space-between;align-items:center;width:100%}
+.dtag{font-size:11px;font-weight:600;color:var(--fa);letter-spacing:.04em;text-transform:uppercase}
+.dfront h3{font-size:16px;line-height:1.25;letter-spacing:-.015em}
+.dmeta{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--mu);margin-top:auto;width:100%;min-width:0}
+.dmeta span{display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dmeta .dnl{color:var(--accent);font-weight:700}
+.dfront .dmeta svg{width:12px;height:12px;flex:none}
+.dback{gap:10px;padding:18px;text-align:center}
+.dback p{font-size:13px;line-height:1.5;margin:0}
+.dback .ex{height:36px;font-size:13px;text-decoration:none}
+.dnone{font-size:12px;color:var(--back-mu)}
+.dres{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 10px;font-size:11px}
+.dres a{color:var(--back-mu)}
+.dedit{position:absolute;top:10px;right:10px;border:0;background:rgba(255,255,255,.15);color:var(--back-fg);font-size:11px;font-weight:600;border-radius:6px;padding:3px 8px;cursor:pointer}
+.dcard{gap:12px}
+.dcm summary{cursor:pointer;font-size:13px;color:var(--accent);font-weight:600}.dcm dl.ficha{font-size:12px;grid-template-columns:minmax(0,104px) minmax(0,1fr)}.dcm dl.ficha dt,.dcm dl.ficha dd{padding:6px 8px;overflow-wrap:anywhere}.datos{align-items:start}
+.dcard h3{font-size:16px}
+dl.dl{display:grid;grid-template-columns:72px minmax(0,1fr);gap:6px 12px;margin:0;font-size:13px}
+dl.dl dt{color:var(--fa)}dl.dl dd{margin:0;overflow-wrap:anywhere}
+.sel{user-select:all}
+.res{display:flex;flex-direction:column;gap:6px;padding-top:10px;border-top:1px solid var(--line)}
+.res a{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;text-decoration:none}
+.res a:hover{text-decoration:underline}
+.datos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+
+/* Inspector lateral, tooltip, toast */
+dialog.side-panel{margin:0 0 0 auto;height:100%;max-height:100%;width:min(560px,100%);max-width:100%;border:0;border-left:1px solid var(--line);padding:0;background:var(--s);color:var(--ink);box-shadow:var(--shadow-lg)}
+dialog.side-panel[open]{animation:slidein 260ms var(--ease)}
+@keyframes slidein{from{transform:translateX(24px);opacity:.001}to{transform:none;opacity:1}}
+dialog.side-panel::backdrop{background:rgba(20,30,15,.32);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.side-panel .inner{display:flex;flex-direction:column;gap:16px;padding:24px max(24px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) 24px}
+.side-panel .close{position:sticky;top:0;align-self:flex-end;z-index:1}
+dl.ficha{display:grid;grid-template-columns:minmax(0,160px) minmax(0,1fr);margin:0;font-size:13px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+dl.ficha dt{padding:9px 12px;background:var(--sunk);color:var(--mu);border-top:1px solid var(--line)}
+dl.ficha dd{margin:0;padding:9px 12px;border-top:1px solid var(--line);overflow-wrap:anywhere}
+dl.ficha dt:first-of-type,dl.ficha dd:first-of-type{border-top:0}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:13px;z-index:60;box-shadow:var(--shadow-lg);animation:rise 200ms var(--ease)}
+.tip{position:fixed;z-index:70;pointer-events:none;max-width:280px;padding:6px 10px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.4;box-shadow:var(--shadow-lg);opacity:0;transform:translateY(2px);transition:opacity 150ms var(--ease),transform 150ms var(--ease)}
+.tip.on{opacity:1;transform:none}
+.scrim{display:none}
+
+@media (max-width:1100px){.pa3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.inspector{position:static}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.st:nth-child(3){border-left:0}.st:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:860px){
+  .shell,.shell.mini{grid-template-columns:minmax(0,1fr)}
+  .side{position:fixed;left:0;top:0;bottom:0;width:272px;height:auto;transform:translateX(-102%);transition:transform 260ms var(--ease);box-shadow:var(--shadow-lg)}
+  .shell.open .side{transform:none}
+  .shell.mini .side{align-items:stretch;padding-left:14px;padding-right:14px}
+  .shell.mini .brand .bt,.shell.mini .grp h6,.shell.mini .it .lbl,.shell.mini .it .n,.shell.mini .status span{display:revert}
+  .shell.mini .vbox{display:flex}.shell.mini .vmini{display:none}
+  .shell.mini .it{width:auto;height:40px;padding:0 10px;justify-content:flex-start}
+  .shell.mini .grp{align-items:stretch}
+  .shell.mini .it .bd{position:static;width:auto;min-width:20px;height:20px;padding:0 6px;font-size:11px;box-shadow:none}
+  .tog{display:none}
+  .burger{display:grid}
+  .scrim{display:block;position:fixed;inset:0;background:rgba(20,30,15,.35);z-index:25;opacity:0;pointer-events:none;transition:opacity 200ms var(--ease)}
+  .shell.open .scrim{opacity:1;pointer-events:auto}
+  .k{width:auto;flex:1}.k kbd{display:none}.me span{display:none}.crumb{display:none}
+  .hero{margin:-24px -16px 0}.hero .in{padding:48px 20px}.hero svg.topo{opacity:.5}
+  .content{padding:24px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(safe-area-inset-left,0px))}
+  .cards,.cols,.g2,.g3,.datos,.pa3{grid-template-columns:minmax(0,1fr)}
+  .stats,.kpis{grid-template-columns:minmax(0,1fr)}
+  .st{border-left:0!important;border-top:1px solid var(--line)}.st:first-child{border-top:0}
+  form.grid{grid-template-columns:minmax(0,1fr)}
+  dl.ficha{grid-template-columns:minmax(0,1fr)}dl.ficha dd{border-top:0}
+  .hb{grid-template-columns:minmax(0,140px) minmax(0,1fr) 28px}
+  .head h2{font-size:28px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.fc .inr{transition:none}}
+</style>
+
+<div class="shell" id="shell">
+  <aside class="side" id="menu" aria-label="Menú principal">
+    <a class="brand" href="#inicio"><span class="logo"><svg width="18" height="18" viewBox="0 0 14 14" aria-hidden="true"><rect x="1" y="7" width="3" height="6" rx="1" fill="#fff" opacity=".55"/><rect x="5.5" y="4" width="3" height="9" rx="1" fill="#fff" opacity=".8"/><rect x="10" y="1" width="3" height="12" rx="1" fill="#A3D06A"/></svg></span><span class="bt"><b>El Rosal en Cifras</b><small>Alcaldía Municipal</small></span></a>
+    <button class="tog" id="tog" type="button" aria-label="Recoger o expandir el menú" data-tip="Recoger o expandir el menú"></button>
+    <nav id="nav" style="display:flex;flex-direction:column;gap:20px"></nav>
+    <div class="vbox" id="vbox" hidden></div>
+    <button class="vmini" id="vmini" type="button" hidden></button>
+    <div class="status" id="mode"><i></i><span>Conectando…</span></div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <div class="main">
+    <header class="top">
+      <button class="burger" id="burger" type="button" aria-label="Abrir menú"></button>
+      <div class="crumb" id="crumb"></div>
+      <form class="k" id="gform" role="search"><span id="gicon"></span><input id="gq" type="search" placeholder="Buscar meta, documento o fuente…" aria-label="Buscar en el portal"><kbd>/</kbd></form>
+      <button class="themeb" id="themeb" type="button"></button>
+      <div class="me" id="me"></div>
+    </header>
+    <main class="content" id="app"></main>
+    <footer>
+      <span>Gestión de la Información Estadística (FURAG POL-17) · Ley 2335 de 2023</span>
+      <span>Coordina: Secretaría de Planeación · Secretaría técnica: Jefatura de Prensa y TIC</span>
+      <span id="foot-upd"></span>
+    </footer>
+  </div>
+</div>
+<dialog class="side-panel" id="side"><div class="inner" id="sideInner"></div></dialog>
+<div class="toast" id="toast" hidden></div>
+<div class="tip" id="tip" role="tooltip"></div>
+
+
+<script>
+"use strict";
+/* ---------- Estado ---------- */
+const S={directorio:[],hallazgos:[],instancias:[],documentos:[],fuentes:[],acciones:[],pol17:[],indicadores:[],mediciones:[],actas:[],aportes:[],config:{},catFuente:""};
+const C={db:null,user:null,dl:null,assets:null,uid:null,canEdit:false,mode:"cargando",profiles:{}};
+const UI={dirQ:"",dirT:"todos",citizen:false,view:"inicio",docScope:"pem",docQ:"",docSerie:"",docEstado:"",indQ:"",indEje:"",indDep:"",indOds:"",fuQ:"",aporteTipo:"medicion"};
+const VIEWS_ALL=[["inicio","Inicio"],["documentos","Documentos"],["estadisticas","Indicadores"],["tableros","Tableros"],["fuentes","Fuentes de datos"],["mesa","Coordinación"],["mejora","Plan de mejora"],["participa","Encuestas"],["directorio","Directorio"],["datos","Datos abiertos"],["aportar","Reportar información"],["revision","Revisión"]];
+const VIEWS=VIEWS_ALL;
+const ODS_C={1:"#E5243B",2:"#DDA63A",3:"#4C9F38",4:"#C5192D",5:"#FF3A21",6:"#26BDE2",7:"#FCC30B",8:"#A21942",9:"#FD6925",10:"#DD1367",11:"#FD9D24",12:"#BF8B2E",13:"#3F7E44",14:"#0A97D9",15:"#56C02B",16:"#00689D",17:"#19486A"};
+const ODS_N={1:"Fin de la pobreza",2:"Hambre cero",3:"Salud y bienestar",4:"Educación de calidad",5:"Igualdad de género",6:"Agua limpia y saneamiento",7:"Energía asequible",8:"Trabajo decente y crecimiento",9:"Industria, innovación e infraestructura",10:"Reducción de desigualdades",11:"Ciudades y comunidades sostenibles",12:"Producción y consumo responsables",13:"Acción por el clima",14:"Vida submarina",15:"Vida de ecosistemas terrestres",16:"Paz, justicia e instituciones sólidas",17:"Alianzas para lograr los objetivos"};
+const SERIES={PL:"Plan",PO:"Política / lineamiento",MA:"Manual",PR:"Procedimiento / protocolo",MT:"Matriz",IN:"Inventario / índice",DI:"Diccionario",FT:"Ficha técnica",DG:"Diagnóstico",IF:"Informe",AC:"Acto / acta",PP:"Presentación",EV:"Evidencia",TB:"Tablero",CD:"Conjunto de datos",NR:"Norma",SW:"Software",IM:"Imagen / infografía"};
+const DEPS={DES:"Despacho",SGG:"Secretaría General y de Gobierno",SPL:"Secretaría de Planeación",SHA:"Secretaría de Hacienda",SOP:"Secretaría de Obras Públicas",SDS:"Secretaría de Desarrollo Social, Salud y Educación",SDE:"Secretaría de Desarrollo Económico y Medio Ambiente",PTIC:"Jefatura de Prensa y TIC",OCI:"Oficina de Control Interno",ESP:"Empresa de Servicios Públicos",IND:"Imdercultur",EXT:"Fuente externa"};
+
+/* ---------- Utilidades ---------- */
+const ED=()=>C.canEdit&&!UI.citizen;
+const LIVE=()=>C.mode==="vivo"&&!UI.citizen;
+const $=s=>document.querySelector(s);
+const h=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>(n==null||n==="")?"—":Number(n).toLocaleString("es-CO",{maximumFractionDigits:2});
+const pend=v=>{const s=String(v??"");if(!s||s==="—")return '<span class="pend">[PENDIENTE]</span>';return h(s).replace(/\[PENDIENTE[^\]]*\]/g,m=>'<span class="pend">'+m+'</span>')};
+const today=()=>new Date().toISOString().slice(0,10);
+const mill=v=>(v==null||v==="")?"—":"$ "+(Number(v)/1e6).toLocaleString("es-CO",{maximumFractionDigits:1})+" M";
+function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>t.hidden=true,3200)}
+function estadoPill(e){
+  const s=String(e||"Sin estado"),l=s.toLowerCase();
+  let k="";
+  if(/aprob|publicad|producto elaborado|cumpl|validad|vigente|activo/.test(l))k="ok";
+  else if(/curso|revisi|borrador|parcial|pendiente de revisi/.test(l))k="info";
+  else if(/sin iniciar|por validar|pendiente|programad/.test(l))k="warn";
+  else if(/rechaz|vencid|obsolet|no aplica/.test(l))k="bad";
+  return '<span class="pill '+k+'">'+h(s)+'</span>';
+}
+function ods(n){n=Number(n);return n?'<span class="ods" style="background:'+ODS_C[n]+'" data-tip="ODS '+n+' · '+h(ODS_N[n])+'">'+n+'</span>':'<span class="pend">—</span>'}
+function depShort(d){return String(d||"").replace("Secretaría de ","S. ").replace("Secretaría ","S. ").replace("Instituto Municipal de Deporte, Cultura y Turismo -Imdercultur-","Imdercultur")}
+function semColor(p){return p==null?"var(--line)":p>=.9?"var(--ok)":p>=.6?"var(--warn)":"var(--bad)"}
+function lastMed(n){const m=S.mediciones.filter(x=>x.n==n&&x.estado==="Publicado").sort((a,b)=>String(b.periodo).localeCompare(String(a.periodo)));return m[0]||null}
+function avance(ind){const m=lastMed(ind.n);if(!m||!Number(ind.meta))return null;return Math.max(0,Number(m.valor)/Number(ind.meta))}
+function prog(p){if(p==null)return '<div class="prog"><div class="track"></div><small>s/d</small></div>';return '<div class="prog"><div class="track"><i style="width:'+Math.min(100,p*100)+'%;background:'+semColor(p)+'"></i></div><small>'+Math.round(p*100)+'%</small></div>'}
+function uniq(a){return [...new Set(a.filter(Boolean))].sort((x,y)=>String(x).localeCompare(String(y),"es"))}
+function opt(list,sel,first){return (first?'<option value="">'+h(first)+'</option>':"")+list.map(v=>'<option value="'+h(v)+'"'+(String(v)===String(sel)?" selected":"")+'>'+h(v)+'</option>').join("")}
+function nameOf(id){if(!id)return "Responsable";const p=C.profiles[id];return (p&&p.name)||"Responsable"}
+async function resolveNames(){if(!C.user)return;const ids=uniq([...S.mediciones,...S.aportes,...S.actas].map(x=>x.autor));if(!ids.length)return;try{C.profiles=await C.user.profiles(ids)}catch(e){}}
+
+/* ---------- Datos: base compartida (claude.ai) o archivo estático (subdominio) ---------- */
+const COLS=["documentos","fuentes","acciones","pol17","mediciones","actas","aportes","directorio","hallazgos","instancias"];
+const SORT={documentos:"codigo",fuentes:"id",acciones:"id",pol17:"id",mediciones:"ts",actas:"fecha",aportes:"ts",directorio:"entidad",hallazgos:"id",instancias:"orden"};
+function applyDocs(col,arr){S[col]=arr.slice().sort((a,b)=>String(a[SORT[col]]||"").localeCompare(String(b[SORT[col]]||""),"es",{numeric:true}));}
+let rTimer=null;function scheduleRender(){clearTimeout(rTimer);rTimer=setTimeout(async()=>{await resolveNames();render()},60)}
+async function boot(){
+  render();
+  const cl=window.claude;
+  let db=null;
+  if(cl&&typeof cl.use==="function"){try{db=await cl.use("db")}catch(e){db=null}}
+  if(db){
+    C.db=db;C.mode="vivo";
+    try{C.user=await cl.use("user")}catch(e){}
+    if(C.user){try{const me=await C.user.me();C.uid=me.id;C.canEdit=me.canEdit;C.me=me}catch(e){}}
+    cl.use("downloads").then(x=>{C.dl=x;if(UI.view==="revision")render()}).catch(()=>{});
+    if(C.canEdit)cl.use("assets").then(x=>{C.assets=x}).catch(()=>{});
+    COLS.forEach(col=>{
+      db.collection(col).onSnapshot(snap=>{applyDocs(col,snap.docs.map(d=>Object.assign({_id:d.id},d.data())));scheduleRender()},err=>{console.warn(col,err);if(err&&err.code==="revoked"){C.mode="estatico";render()}});
+    });
+    db.doc("catalogo/indicadores").onSnapshot(s=>{const d=s.exists?s.data():null;S.indicadores=d?d.items||[]:[];S.catFuente=d?d.fuente||"":"";scheduleRender()});
+    db.doc("config/portal").onSnapshot(s=>{S.config=s.exists?s.data():{};scheduleRender()});
+  }else{
+    await loadStatic();
+  }
+  render();
+}
+async function loadStatic(){
+  C.mode="estatico";
+  try{
+    const r=await fetch("datos.json",{cache:"no-store"});const j=await r.json();
+    COLS.forEach(c=>applyDocs(c,(j[c]||[]).map(x=>Object.assign({_id:x.codigo||x.id||x._id},x))));
+    S.indicadores=(j.catalogo&&j.catalogo.indicadores&&j.catalogo.indicadores.items)||[];
+    S.config=j.config||{};
+  }catch(e){C.mode="sin-datos"}
+}
+async function write(col,id,data,merge){
+  if(!C.db){toast("Esta copia es de solo lectura. Registre el aporte en el portal de trabajo.");return false}
+  try{const ref=id?C.db.collection(col).doc(id):C.db.collection(col).doc();if(merge)await ref.update(data);else await ref.set(data);return ref.id}
+  catch(e){toast(e&&e.code==="invalid_argument"?"No tiene permiso para guardar en esta sección.":e&&e.code==="quota_exceeded"?"La base llegó a su límite de registros. Avise a Prensa y TIC.":"No se pudo guardar. Intente de nuevo.");console.warn(e);return false}
+}
+
+/* Iconos (trazo 1.6, rejilla 24) */
+const ICONS={
+home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+file:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+dash:'<rect x="3" y="3" width="8" height="10" rx="1.5"/><rect x="13" y="3" width="8" height="6" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="15" width="8" height="6" rx="1.5"/>',
+db:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',
+users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.4 3.2-5.5 6.5-5.5s5.9 2.1 6.5 5.5M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c2 .7 3.2 2.6 3.5 5.2"/>',
+upload:'<path d="M12 16V4M7 9l5-5 5 5M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/>',
+check:'<circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.5L16 9.5"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+down:'<path d="M12 4v12M7 11l5 5 5-5M4 20h16"/>',
+arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+chev:'<path d="m9 6 6 6-6 6"/>',
+menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
+eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+chat:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+book:'<rect x="4" y="3" width="15" height="18" rx="2"/><circle cx="11.5" cy="10" r="2.5"/><path d="M7.5 16.5c.7-1.8 2.2-2.8 4-2.8s3.3 1 4 2.8M19 7h2M19 12h2M19 17h2"/>',
+moon:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'
+};
+function ic(n,s=18,w=1.6){return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]||""}</svg>`}
+
+/* ---------- Navegación ---------- */
+const VLABEL=Object.fromEntries(VIEWS.map(v=>[v[0],v[1]]));
+function go(v){if(!VIEWS.some(x=>x[0]===v)||(v==="revision"&&C.mode==="vivo"&&!ED())||(v==="aportar"&&C.mode!=="cargando"&&!LIVE()))v="inicio";UI.view=v;if(location.hash!=="#"+v)history.replaceState(null,"","#"+v);$("#shell").classList.remove("open");render();window.scrollTo({top:0})}
+window.addEventListener("hashchange",()=>go(location.hash.slice(1)));
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function renderShell(){
+  const pendN=S.aportes.filter(a=>a.estado==="Pendiente de revisión").length+S.mediciones.filter(m=>m.estado==="En revisión").length;
+  const it=(k,icon,extra)=>`<a class="it" href="#${k}"${UI.view===k?' aria-current="page"':""} data-tip="${h(VLABEL[k])}">${ic(icon,20)}<span class="lbl">${h(VLABEL[k])}</span>${extra||""}</a>`;
+  const n=v=>v?`<span class="n">${v}</span>`:"";
+  let html=`<div class="grp"><h6>EXPLORAR</h6>${it("inicio","home")}${it("estadisticas","chart",n(S.indicadores.length))}${it("tableros","dash",n(5))}${it("documentos","file",n(S.documentos.length))}${it("fuentes","db",n(S.fuentes.length))}${it("mesa","users")}${it("directorio","book",n(S.directorio.length))}${it("mejora","flag",n(hVisibles().length))}${it("datos","down")}${it("participa","chat")}</div>`;
+  if(LIVE())html+=`<div class="grp"><h6>GESTIÓN</h6>${it("aportar","upload")}${ED()?it("revision","check",pendN?`<span class="bd">${pendN}</span>`:""):""}</div>`;
+  $("#nav").innerHTML=html;
+  $("#crumb").innerHTML='Información estadística / <b>'+h(VLABEL[UI.view]||"Inicio")+'</b>';
+  const m=$("#mode");m.className="status "+C.mode;
+  m.querySelector("span").textContent=C.mode==="vivo"?(UI.citizen?"Vista previa ciudadana":"En línea · edición habilitada"):C.mode==="estatico"?"Datos publicados · solo lectura":C.mode==="sin-datos"?"Sin datos":"Conectando…";
+  m.setAttribute("data-tip",m.querySelector("span").textContent);
+  const vb=$("#vbox"),vm=$("#vmini");
+  if(C.mode==="vivo"){vb.hidden=false;vm.hidden=false;
+    vb.innerHTML='<small>VISTA</small><div class="vseg" role="group" aria-label="Vista"><button type="button" data-v="f" aria-pressed="'+!UI.citizen+'">Funcionario</button><button type="button" data-v="c" aria-pressed="'+UI.citizen+'">Ciudadano</button></div>';
+    vb.querySelectorAll("button").forEach(b=>b.onclick=()=>setCitizen(b.dataset.v==="c"));
+    vm.innerHTML=ic(UI.citizen?"eye":"users",18);vm.setAttribute("data-tip",UI.citizen?"Vista ciudadana · cambiar a funcionario":"Vista funcionario · cambiar a ciudadano");vm.onclick=()=>setCitizen(!UI.citizen);
+  }else{vb.hidden=true;vm.hidden=true}
+  const me=$("#me");me.innerHTML="";
+  if(C.me&&C.me.avatarUrl){const i=document.createElement("img");i.alt="";i.src=C.me.avatarUrl;const s=document.createElement("span");s.textContent=(C.me.name||"Usted")+(UI.citizen?"":C.canEdit?" · administradora":" · responsable");me.append(s,i)}
+  $("#foot-upd").textContent="Corte de datos: "+(S.config.actualizado||today());
+}
+function setCitizen(v){UI.citizen=v;if(v&&(UI.view==="aportar"||UI.view==="revision"))UI.view="inicio";go(UI.view)}
+(function initShell(){
+  const sh=$("#shell");
+  if(lsGet("er-menu")==="mini")sh.classList.add("mini");
+  $("#tog").innerHTML=ic("chev",14,2);
+  $("#tog").onclick=()=>{sh.classList.toggle("mini");lsSet("er-menu",sh.classList.contains("mini")?"mini":"full")};
+  $("#burger").innerHTML=ic("menu",20);
+  $("#burger").onclick=()=>sh.classList.toggle("open");
+  $("#scrim").onclick=()=>sh.classList.remove("open");
+  $("#gicon").innerHTML=ic("search",16);
+  const root=document.documentElement,tb=$("#themeb");
+  const paintTheme=()=>{const d=root.classList.contains("dark");tb.innerHTML=ic(d?"sun":"moon",18);tb.setAttribute("aria-label",d?"Cambiar a fondo blanco":"Cambiar a modo oscuro");tb.setAttribute("data-tip",d?"Fondo blanco":"Modo oscuro")};
+  if(lsGet("er-theme")==="dark")root.classList.add("dark");
+  paintTheme();
+  tb.onclick=()=>{root.classList.toggle("dark");lsSet("er-theme",root.classList.contains("dark")?"dark":"light");paintTheme()};
+  $("#gform").addEventListener("submit",e=>{e.preventDefault();runSearch($("#gq").value.trim())});
+  document.addEventListener("keydown",e=>{if(e.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();$("#gq").focus()}if(e.key==="Escape")sh.classList.remove("open")});
+})();
+function runSearch(q){UI.indQ=q;UI.docQ=q;UI.fuQ=q;UI.docScope="todo";UI.indEje=UI.indDep=UI.indOds="";go(filtInd().length?"estadisticas":filtDocs().length?"documentos":"fuentes")}
+
+/* ---------- Vistas ---------- */
+function render(){
+  renderShell();
+  const v=UI.view,app=$("#app");
+  const fn={directorio:vDirectorio,datos:vDatos,inicio:vInicio,documentos:vDocumentos,estadisticas:vIndicadores,tableros:vTableros,fuentes:vFuentes,mesa:vMesa,mejora:vMejora,participa:vParticipa,aportar:vAportar,revision:vRevision}[v]||vInicio;
+  const active=document.activeElement&&document.activeElement.id;
+  const caret=active&&document.activeElement.selectionStart;
+  app.innerHTML='<section class="view">'+fn()+'</section>';
+  if(fn.after)fn.after();
+  if(active){const el=document.getElementById(active);if(el){el.focus();try{if(caret!=null)el.setSelectionRange(caret,caret)}catch(e){}}}
+}
+
+/* ---------- Ilustraciones isométricas de las tarjetas ---------- */
+const ISO=(()=>{const T='#A3D06A',L='#5A9E2F',R='#3D7A26',W='#FFFFFF',WL='#E4EADC',WR='#CBD5BF';
+  const P=(X,Y,Z)=>{const s=9;return [90+(X-Y)*0.866*s,92+(X+Y)*0.5*s-Z*s]};
+  const poly=(pts,f)=>`<polygon points="${pts.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' ')}" fill="${f}" stroke="${f}" stroke-width=".6" stroke-linejoin="round"/>`;
+  const box=(x,y,z,w,d,hh,c=[T,L,R])=>poly([P(x,y+d,z),P(x+w,y+d,z),P(x+w,y+d,z+hh),P(x,y+d,z+hh)],c[1])+poly([P(x+w,y,z),P(x+w,y+d,z),P(x+w,y+d,z+hh),P(x+w,y,z+hh)],c[2])+poly([P(x,y,z+hh),P(x+w,y,z+hh),P(x+w,y+d,z+hh),P(x,y+d,z+hh)],c[0]);
+  const base=()=>box(-5.3,-5.3,-1.9,10.6,10.6,.7,[L,L,R])+box(-5,-5,-1.2,10,10,1.2,['#EEF5E4','#DCE6D0','#C6D3B8']);
+  const cyl=(cx,cy,z,r,hh,c=[T,L])=>{const [x,y]=P(cx,cy,z),[x2,y2]=P(cx,cy,z+hh),rx=r*9*1.1,ry=r*9*.6;return `<path d="M${x-rx},${y2} L${x-rx},${y} A${rx},${ry} 0 0 0 ${x+rx},${y} L${x+rx},${y2} Z" fill="${c[1]}"/><ellipse cx="${x2}" cy="${y2}" rx="${rx}" ry="${ry}" fill="${c[0]}"/>`};
+  return {
+    estadisticas:()=>base()+box(-3.5,-1,0,1.6,1.6,3)+box(-1.2,-1,0,1.6,1.6,5)+box(1.1,-1,0,1.6,1.6,7.5)+box(3.4,-1,0,1.6,1.6,4.2),
+    tableros:()=>base()+box(-3.5,1.5,0,7,.6,6.5,[T,'#E9F3DD',R])+`<polyline points="${[[-3,2],[-1.5,3.4],[0,2.8],[1.5,4.6],[3,5.4]].map(a=>P(a[0],2.1,a[1]).map(v=>v.toFixed(1)).join(',')).join(' ')}" fill="none" stroke="${R}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>`+box(-3.5,-3.5,0,2.4,2.4,1.2)+box(-.5,-3.5,0,2.4,2.4,2)+box(2.5,-3.5,0,1.2,2.4,.8),
+    documentos:()=>base()+box(-3,-3,0,5,6.5,.5,[W,WL,WR])+box(-2.6,-2.6,.5,5,6.5,.5,[W,WL,WR])+box(-2.2,-2.2,1,5,6.5,.5,[T,L,R])+box(2.2,-3.5,0,.7,5,6)+box(3.1,-3.5,0,.7,5,4.6,[W,WL,WR]),
+    fuentes:()=>base()+cyl(0,0,0,3.2,2.2)+cyl(0,0,2.6,3.2,2.2)+cyl(0,0,5.2,3.2,2.2,[W,L]),
+    mesa:()=>base()+box(-2.5,-2.5,0,5,5,1.6,[W,WL,WR])+[[-3.8,-.5],[3.2,-.5],[-.4,-3.8],[-.4,3.2]].map(([a,b])=>box(a,b,0,1,1,1.3)+cyl(a+.5,b+.5,1.8,.55,1.4,[T,R])).join('')+box(-1,-1,1.6,2,2,.3),
+    datos:()=>base()+box(-3,-3,0,6,6,2.2)+box(-.7,-.7,2.2,1.4,1.4,3,[W,WL,WR])+poly([P(-1.8,-1.8,5.2),P(1.8,-1.8,5.2),P(1.8,1.8,5.2),P(-1.8,1.8,5.2)],WL)+poly([P(1.8,-1.8,5.2),P(1.8,1.8,5.2),P(0,0,8)],WR)+poly([P(-1.8,1.8,5.2),P(1.8,1.8,5.2),P(0,0,8)],W)
+  }})();
+function topo(){let p='';const n=(a,k)=>Math.sin(a*3+k*.7)*.06+Math.sin(a*5-k*.4)*.035+Math.cos(a*2+k*.3)*.05;
+  for(let k=0;k<16;k++){const rx=60+k*30,ry=40+k*22;let d='';for(let i=0;i<=96;i++){const a=i/96*Math.PI*2,f=1+n(a,k);d+=(i?'L':'M')+(500+Math.cos(a)*rx*f).toFixed(1)+' '+(280+Math.sin(a)*ry*f).toFixed(1)}
+    p+=`<path d="${d}Z" fill="none" stroke="var(${k%4===0?'--g500':'--g300'})" stroke-opacity="${k%4===0?.5:.45}" stroke-width="${k%4===0?1.3:.8}"/>`}
+  return `<svg class="topo" viewBox="0 0 880 560" aria-hidden="true">${p}<circle cx="500" cy="280" r="5" fill="var(--g600)"/><circle cx="500" cy="280" r="15" fill="var(--g500)" opacity=".15"/></svg>`}
+
+function pemDocs(){return S.documentos.filter(d=>d.eje==="GIE")}
+function pol17Pct(){const n=S.pol17.length;if(!n)return 0;return S.pol17.filter(p=>p.estado==="Producto elaborado"||p.estado==="Cumplida").length/n}
+
+/* ---------- Inicio ---------- */
+function vInicio(){
+  const medidos=S.indicadores.filter(i=>lastMed(i.n)).length;
+  const odsN=new Set(S.indicadores.map(i=>i.ods).filter(Boolean)).size;
+  const feed=[
+    ...S.mediciones.filter(m=>m.estado==="Publicado").map(m=>({t:m.ts||"",txt:"Medición "+m.periodo+" de la meta "+m.n+": "+fmt(m.valor)})),
+    ...S.actas.map(a=>({t:a.fecha||"",txt:"Acta de Mesa Técnica "+(a.codigo||"")+" – "+(a.tema||"")})),
+    ...S.documentos.filter(d=>d.actualizado).map(d=>({t:d.actualizado,txt:"Documento "+d.codigo+" actualizado a v"+d.version}))
+  ].sort((a,b)=>String(b.t).localeCompare(String(a.t))).slice(0,6);
+  const CARDS=[
+    ['estadisticas','Indicadores',S.indicadores.length+' metas del Plan de Desarrollo','Avance de cada meta del Plan de Desarrollo 2024–2027, con su ficha técnica, la fuente del dato y el Objetivo de Desarrollo Sostenible al que aporta.'],
+    ['tableros','Tableros','5 tableros de seguimiento','Gráficas de metas por ODS, cumplimiento de la política de información estadística, metas por dependencia y plan de acción del PEM.'],
+    ['documentos','Documentos',pemDocs().length+' documentos del PEM','Plan Estadístico, lineamientos, manual de indicadores, protocolos y actos administrativos, cada uno con su código del índice maestro.'],
+    ['fuentes','Fuentes de datos',S.fuentes.length+' registros inventariados','Registros administrativos y fuentes externas que alimentan las cifras: quién los custodia, en qué sistema están y cada cuánto se actualizan.'],
+    ['mesa','Mesa Técnica','Instancia de validación','Integrantes, calendario de sesiones y actas de la Mesa Técnica de Información Estadística, que valida las cifras antes de publicarlas.'],
+    ['datos','Datos abiertos','Descarga libre','Catálogo de metas, inventario de fuentes e índice de documentos para descargar y reutilizar en formato abierto.']
+  ];
+  return `
+  <div class="hero">${topo()}<div class="in">
+    <span class="tag"><i>Nuevo</i>Plan Estadístico Municipal 2026–2027</span>
+    <h1>Las cifras de El Rosal, <em>abiertas</em> para todos.</h1>
+    <p class="lead">Consulte el avance del Plan de Desarrollo, los tableros de seguimiento y los documentos que respaldan cada dato publicado por la Alcaldía.</p>
+    <form class="sb" id="hform" role="search">${ic("search",20)}<input id="hq" type="search" placeholder="Busque un indicador, un tema o un documento" aria-label="Buscar"><button class="btn primary" style="height:44px;padding:0 22px">Buscar</button></form>
+    <div class="chips">Sugerencias:${["Vacunación","PQRDS","Matrícula","Predial","Vivienda"].map(c=>`<button type="button" data-q="${c}">${c}</button>`).join("")}</div>
+  </div></div>
+  <div style="padding-top:24px"><div class="sh" style="margin-bottom:24px"><div><h2>¿Qué quiere consultar?</h2><p>Pase el cursor o toque una tarjeta para ver qué encontrará.</p></div></div>
+    <div class="cards">${CARDS.map(([k,t,s,d])=>`<div class="fc" role="button" tabindex="0" data-go="${k}" aria-label="${h(t)}: ${h(d)}"><div class="inr">
+      <div class="face front"><svg viewBox="0 0 180 160" aria-hidden="true">${ISO[k]()}</svg><b>${h(t)}</b><small>${h(s)}</small></div>
+      <div class="face back"><span class="num">${h(s.toUpperCase())}</span><b>${h(t)}</b><p>${h(d)}</p><span class="ex">Explorar ${ic("arrow",16,2)}</span></div>
+    </div></div>`).join("")}</div></div>
+  <div class="stats">
+    <div class="st"><b>${S.indicadores.length}</b><span>metas con seguimiento</span><small>Plan Indicativo 2024–2027 · ${medidos} con medición</small></div>
+    <div class="st"><b>${S.fuentes.length}</b><span>fuentes de datos registradas</span><small>Inventario ER-SPL-IN-GIE-001</small></div>
+    <div class="st"><b>${pemDocs().length}</b><span>documentos del Plan Estadístico</span><small>Índice maestro ER-PTIC-IN-GDO-001</small></div>
+    <div class="st"><b>${odsN}<span>/17</span></b><span>Objetivos de Desarrollo Sostenible</span><small>Matriz metas–ODS ER-SPL-MT-GIE-002</small></div>
+  </div>
+  <div class="cols">
+    <div class="panel"><h3>${LIVE()?"Cómo alimentar el portal":"Cómo se publica una cifra"}</h3>
+      <ol class="steps">
+        <li><div><b>La dependencia reporta.</b> ${LIVE()?'En <a href="#aportar">Reportar información</a> el enlace registra':'El enlace de cada secretaría registra'} la medición de su meta con la fuente que la respalda.</div></li>
+        <li><div><b>Planeación valida.</b> Revisa la cifra contra la fuente y la ficha técnica (procedimiento ER-SPL-PR-GIE-001).</div></li>
+        <li><div><b>Se publica.</b> La cifra aparece en indicadores y tableros, con fecha de corte.</div></li>
+      </ol></div>
+    <div class="panel"><h3>Últimas actualizaciones</h3>
+      ${feed.length?'<ul class="feed">'+feed.map(f=>'<li><time>'+h(String(f.t).slice(0,10))+'</time><span>'+h(f.txt)+'</span></li>').join("")+'</ul>':'<div class="empty">Aún no hay mediciones publicadas. La primera aparecerá aquí cuando Planeación apruebe un reporte.</div>'}</div>
+  </div>`;
+}
+vInicio.after=()=>{
+  $("#hform").addEventListener("submit",e=>{e.preventDefault();runSearch($("#hq").value.trim())});
+  document.querySelectorAll(".chips [data-q]").forEach(b=>b.onclick=()=>runSearch(b.dataset.q));
+  const hover=matchMedia("(hover:hover)").matches;
+  document.querySelectorAll(".fc").forEach(c=>c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go(c.dataset.go)}}));
+  document.querySelectorAll(".fc").forEach(c=>c.addEventListener("click",()=>{if(hover||c.classList.contains("on"))go(c.dataset.go);else{document.querySelectorAll(".fc.on").forEach(x=>x!==c&&x.classList.remove("on"));c.classList.add("on")}}));
+};
+
+/* ---------- Tableros (paleta orgánica) ---------- */
+const PAL=["var(--c1)","var(--c2)","var(--c3)","var(--c4)","var(--c5)","var(--c6)","var(--c7)","var(--c8)"];
+const ST={ok:"var(--c1)",cur:"var(--c3)",no:"var(--track)"};
+function monthIdx(s){const MES={ene:1,feb:2,mar:3,abr:4,may:5,jun:6,jul:7,ago:8,sep:9,oct:10,nov:11,dic:12};const m=String(s||"").toLowerCase().match(/([a-z]{3})\w*\s+(\d{4})/);if(!m||!MES[m[1]])return null;return (Number(m[2])-2026)*12+MES[m[1]]-10}
+function vTableros(){
+  const N=S.indicadores.length||1,medidos=S.indicadores.filter(i=>lastMed(i.n)).length;
+  const cnt={};S.indicadores.forEach(i=>{if(i.ods)cnt[i.ods]=(cnt[i.ods]||0)+1});
+  const pc={ok:0,cur:0,no:0};S.pol17.forEach(p=>{if(p.estado==="Producto elaborado"||p.estado==="Cumplida")pc.ok++;else if(/curso/i.test(p.estado))pc.cur++;else pc.no++});
+  const P17=S.pol17.length||55;
+  const pem=pemDocs(),pemRev=pem.filter(d=>/revisi|aprob|public/i.test(d.estado)).length;
+  // KPIs
+  const odsStrip=Array.from({length:17},(_,k)=>`<i style="flex:1;background:${cnt[k+1]?PAL[k%8]:"var(--track)"};opacity:${cnt[k+1]?.35+cnt[k+1]/40*.65:1}"></i>`).join("");
+  const kpis=`<div class="kpis">
+    <div class="panel kpi"><div class="l">Metas del Plan</div><div class="v">${S.indicadores.length}</div><div class="segbar">${odsStrip}</div><div class="f">${Object.keys(cnt).length} de 17 ODS con al menos una meta</div></div>
+    <div class="panel kpi"><div class="l">Con medición validada</div><div class="v">${medidos}<small> / ${S.indicadores.length}</small></div><div class="segbar"><i style="flex:${medidos};background:${ST.ok}"></i><i style="flex:${N-medidos};background:transparent"></i></div><div class="f">${medidos?Math.round(medidos/N*100)+" % de las metas":"Sin reportes todavía"}</div></div>
+    <div class="panel kpi"><div class="l">Documentos del PEM</div><div class="v">${pem.length}</div><div class="segbar"><i style="flex:${pemRev};background:${ST.cur}"></i><i style="flex:${pem.length-pemRev};background:transparent"></i></div><div class="f">${pem.length-pemRev} en borrador · ${pemRev} en revisión o aprobados</div></div>
+    <div class="panel kpi"><div class="l">Avance POL-17</div><div class="v">${Math.round(pc.ok/P17*100)}<small> %</small></div><div class="segbar"><i style="flex:${pc.ok};background:${ST.ok}"></i><i style="flex:${pc.cur};background:${ST.cur}"></i><i style="flex:${pc.no};background:transparent"></i></div><div class="f">${pc.ok} con producto · ${pc.cur} en curso · ${pc.no} sin iniciar</div></div>
+  </div>`;
+  // ODS
+  const maxO=Math.max(10,...Object.values(cnt)),top=Math.ceil(maxO/10)*10,W=760,H=300,bw=(W-16)/17,y=v=>H-26-v/top*(H-50);
+  const ods=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Metas por ODS">${[...Array(top/10)].map((_,i)=>{const t=(i+1)*10;return `<line x1="0" x2="${W}" y1="${y(t)}" y2="${y(t)}" stroke="var(--grid)"/><text x="${W}" y="${y(t)-4}" text-anchor="end">${t}</text>`}).join("")}
+    ${Array.from({length:17},(_,k)=>{const v=cnt[k+1]||0,x=8+k*bw+5;return `<rect x="${x}" y="${y(v)}" width="${bw-10}" height="${Math.max(0,H-26-y(v))}" rx="5" fill="${PAL[k%8]}" data-tip="ODS ${k+1} · ${h(ODS_N[k+1])}: ${v} metas (${Math.round(v/N*100)} % del Plan)"/>${v?`<text class="lb" x="${x+(bw-10)/2}" y="${y(v)-6}" text-anchor="middle">${v}</text>`:""}<text x="${x+(bw-10)/2}" y="${H-8}" text-anchor="middle">${k+1}</text>`}).join("")}
+    <line x1="0" x2="${W}" y1="${H-26}" y2="${H-26}" stroke="var(--line2)"/></svg>`;
+  // Donut
+  const r=62,Cc=2*Math.PI*r;let off=0;
+  const donut=`<svg width="168" height="168" viewBox="0 0 168 168" role="img" aria-label="Avance POL-17" style="width:168px;height:168px;flex:none"><circle cx="84" cy="84" r="${r}" fill="none" stroke="var(--track)" stroke-width="22"/>${[[pc.ok,ST.ok,"Producto elaborado"],[pc.cur,ST.cur,"En curso"]].map(([n,c,l])=>{const L=n/P17*Cc,s=`<circle cx="84" cy="84" r="${r}" fill="none" stroke="${c}" stroke-width="22" stroke-dasharray="${Math.max(0,L-2)} ${Cc}" stroke-dashoffset="${-off}" transform="rotate(-90 84 84)" data-tip="${l}: ${n}"/>`;off+=L;return s}).join("")}<text x="84" y="86" text-anchor="middle" style="font-size:30px;font-weight:800;fill:var(--ink)">${Math.round(pc.ok/P17*100)}%</text><text x="84" y="106" text-anchor="middle">con producto</text></svg>`;
+  const lid={};S.pol17.forEach(p=>{lid[p.lider]=(lid[p.lider]||0)+1});const lidL=Object.entries(lid).sort((a,b)=>b[1]-a[1]),lmax=Math.max(1,...lidL.map(x=>x[1]));
+  // Ejes
+  const ej={};S.indicadores.forEach(i=>{const e=String(i.eje||"Sin eje").replace(/^Cambios? para (el |la )?/,"").replace(/^./,c=>c.toUpperCase());ej[e]=(ej[e]||0)+1});const ejL=Object.entries(ej).sort((a,b)=>b[1]-a[1]);
+  // Dependencias
+  const dp={};S.indicadores.forEach(i=>{const d=depShort(i.dep);dp[d]=dp[d]||{t:0,m:0};dp[d].t++;if(lastMed(i.n))dp[d].m++});
+  let dpL=Object.entries(dp).sort((a,b)=>b[1].t-a[1].t);const big=dpL.filter(x=>x[1].t>=5),small=dpL.filter(x=>x[1].t<5);
+  if(small.length)big.push(["Otras ("+small.length+": compartidas y Hacienda)",small.reduce((a,x)=>({t:a.t+x[1].t,m:a.m+x[1].m}),{t:0,m:0})]);
+  const dmax=Math.max(1,...big.map(x=>x[1].t));
+  // Gantt
+  const gantt=S.acciones.map(a=>{const i0=monthIdx(a.inicio),i1=monthIdx(a.fin),ok=i0!=null&&i1!=null,c=/curso/i.test(a.estado)?ST.cur:/elabor|cumpl|termin/i.test(a.estado)?ST.ok:"var(--c4)";
+    return `<div class="gr"><div class="n" data-tip="${h(a.accion)}"><code>${h(a.id)}</code>${h(a.accion)}</div><div class="ln">${ok?`<i style="left:${Math.max(0,i0)/9*100}%;width:${Math.max(1,i1-Math.max(0,i0)+1)/9*100}%;background:${c}" data-tip="${h(a.inicio)} – ${h(a.fin)} · ${h(a.estado)} · ${h(a.lider)}"></i>`:""}</div></div>`}).join("");
+  const body=`${kpis}
+  <div class="g2">
+    <div class="panel chart"><div class="pt"><div><h3>Metas del Plan de Desarrollo por ODS</h3><div class="s">${S.indicadores.length} metas · asignación propuesta en la matriz ER-SPL-MT-GIE-002</div></div></div>${ods}<p class="src">Fuente: Plan Indicativo 2024–2027 · ODS por validar con cada secretaría. Pase el cursor por una barra para ver el detalle.</p></div>
+    <div class="panel chart"><div class="pt"><div><h3>Política de información estadística</h3><div class="s">FURAG POL-17 · ${P17} recomendaciones</div></div></div>
+      <div class="donutrow">${donut}<div class="leg"><div><i style="background:${ST.ok}"></i><span>Producto elaborado</span><b>${pc.ok}</b></div><div><i style="background:${ST.cur}"></i><span>En curso</span><b>${pc.cur}</b></div><div><i style="background:var(--track)"></i><span>Sin iniciar</span><b>${pc.no}</b></div></div></div>
+      <div class="hbars">${lidL.map(([k,v])=>`<div class="hb" style="grid-template-columns:minmax(0,200px) minmax(0,1fr) 28px"><span>${h(k)}</span><span class="tr"><i style="width:${v/lmax*100}%;background:var(--c6)"></i></span><b>${v}</b></div>`).join("")}</div>
+      <p class="src">Fuente: matriz ER-SPL-MT-GIE-005</p></div>
+  </div>
+  ${paPanel()}
+  <div class="g3">
+    <div class="panel chart"><div class="pt"><div><h3>Metas por eje del Plan</h3><div class="s">Participación de cada eje en las ${S.indicadores.length} metas</div></div></div>
+      <div class="stack">${ejL.map(([k,v],i)=>`<i style="flex:${v};background:${PAL[i%8]}" data-tip="${h(k)}: ${v} metas (${Math.round(v/N*100)} %)"></i>`).join("")}</div>
+      <div class="leg">${ejL.map(([k,v],i)=>`<div><i style="background:${PAL[i%8]}"></i><span>${h(k)}</span><b>${v} <span>· ${Math.round(v/N*100)} %</span></b></div>`).join("")}</div>
+      <p class="src">Fuente: Plan Indicativo 2024–2027</p></div>
+    <div class="panel chart"><div class="pt"><div><h3>Metas por dependencia líder</h3><div class="s">Total de metas · el detalle muestra cuántas tienen medición</div></div></div>
+      <div class="hbars">${big.map(([k,v],i)=>`<div class="hb"><span data-tip="${h(k)}">${h(k)}</span><span class="tr" data-tip="${h(k)}: ${v.t} metas · ${v.m} con medición"><i style="width:${v.t/dmax*100}%;background:${PAL[i%8]}"></i></span><b>${v.t}</b></div>`).join("")}</div>
+      <p class="src">Fuente: Plan Indicativo 2024–2027 · mediciones validadas en el portal</p></div>
+  </div>
+  <div class="panel chart"><div class="pt"><div><h3>Plan de acción del PEM</h3><div class="s">${S.acciones.length} acciones · octubre 2026 a junio 2027</div></div></div>
+    <div style="overflow-x:auto"><div class="gantt"><div class="gr"><div></div><div class="mo">${["oct","nov","dic","ene","feb","mar","abr","may","jun"].map(m=>`<span>${m}</span>`).join("")}</div></div>${gantt||'<div class="empty">Las acciones se cargan desde el plan.</div>'}</div></div>
+    <div class="leg" style="flex-direction:row;gap:20px"><div style="grid-template-columns:12px auto"><i style="background:${ST.cur}"></i><span>En curso</span></div><div style="grid-template-columns:12px auto"><i style="background:var(--c4)"></i><span>Sin iniciar</span></div><div style="grid-template-columns:12px auto"><i style="background:${ST.ok}"></i><span>Terminada</span></div></div>
+    <p class="src">Fuente: Plan Estadístico Municipal ER-SPL-PL-GIE-001, sección 6</p></div>`;
+  return `<div class="head"><div><div class="eyebrow">Corte ${h(S.config.actualizado||today())}</div><h2>Tableros de <em class="serif">seguimiento</em></h2><p>Se actualizan con cada medición validada por la Secretaría de Planeación.</p></div>${(C.dl||C.mode==="estatico")?'<button class="btn primary" id="dlAll">'+ic("down",16)+'Descargar datos</button>':""}</div>
+  ${ED()?`<div class="dash"><div style="display:flex;flex-direction:column;gap:16px;min-width:0">${body}</div>${inspector(medidos)}</div>`:body}`;
+}
+function paPanel(){
+  const L=S.indicadores,P=L.filter(i=>i.pa);if(!P.length)return "";
+  const tot=P.reduce((a,i)=>a+(i.pa.apropiado||0),0),bp=new Set(P.map(i=>i.pa.bpin).filter(Boolean)).size;
+  const ej={};P.forEach(i=>{const e=String(i.eje||"Sin eje").replace(/^Cambios? para (el |la )?/i,"").replace(/^./,c=>c.toUpperCase());ej[e]=(ej[e]||0)+(i.pa.apropiado||0)});const ejL=Object.entries(ej).sort((a,b)=>b[1]-a[1]),emax=Math.max(1,...ejL.map(x=>x[1]));
+  const fu={};P.forEach(i=>{const f=/SGP/i.test(i.pa.fuente)?"SGP Propósito General":/corrientes/i.test(i.pa.fuente)?"Ingresos corrientes de libre destinación":(i.pa.fuente||"Sin fuente");fu[f]=(fu[f]||0)+(i.pa.apropiado||0)});const fuL=Object.entries(fu).sort((a,b)=>b[1]-a[1]);
+  const q=[["Metas incluidas en el plan",P.length,L.length],["Con recursos apropiados",P.filter(i=>i.pa.apropiado).length,P.length],["Con meta programada 2026",P.filter(i=>i.pa.prog!=null).length,P.length],["Con ejecución reportada",P.filter(i=>i.pa.ej).length,P.length],["Con contrato SECOP enlazado",P.filter(i=>i.pa.secop).length,P.length]];
+  const qc=r=>r>=.9?"var(--c1)":r>=.5?"var(--c3)":"var(--c2)";
+  return `<div class="panel chart"><div class="pt"><div><h3>Plan de acción 2026: inversión y calidad del reporte</h3><div class="s">${P.length} metas · ${bp} proyectos BPIN · publicado el 31 de enero de 2026</div></div><a class="btn sm" href="#documentos" data-doc-open="ER-SPL-PL-PLA-002">Ver documento</a></div>
+    <div class="pa3">
+      <div style="display:flex;flex-direction:column;gap:14px"><div><div class="eyebrow">Recursos apropiados</div><div class="big num" style="font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-top:6px">${mill(tot)}</div><div class="s">${Math.round(tot).toLocaleString("es-CO")} COP</div></div>
+        <div class="stack" style="height:14px">${fuL.map(([k,v],i)=>`<i style="flex:${v};background:${PAL[[0,3,2][i%3]]}" data-tip="${h(k)}: ${mill(v)} (${Math.round(v/tot*100)} %)"></i>`).join("")}</div>
+        <div class="leg">${fuL.map(([k,v],i)=>`<div><i style="background:${PAL[[0,3,2][i%3]]}"></i><span>${h(k)}</span><b>${Math.round(v/tot*100)} %</b></div>`).join("")}</div></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div class="eyebrow">Por eje del Plan</div><div class="hbars">${ejL.map(([k,v],i)=>`<div class="hb" style="grid-template-columns:minmax(0,150px) minmax(0,1fr) 64px"><span>${h(k)}</span><span class="tr" data-tip="${h(k)}: ${mill(v)}"><i style="width:${v/emax*100}%;background:${PAL[i%8]}"></i></span><b style="font-size:12px">${mill(v).replace("$ ","")}</b></div>`).join("")}</div></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><div class="eyebrow">Completitud del reporte</div><div class="hbars">${q.map(([k,a,b])=>`<div class="hb" style="grid-template-columns:minmax(0,210px) minmax(0,1fr) 56px"><span data-tip="${h(k)}">${h(k)}</span><span class="tr"><i style="width:${b?a/b*100:0}%;background:${qc(b?a/b:0)}"></i></span><b style="font-size:12px">${a}/${b}</b></div>`).join("")}</div></div>
+    </div>
+    <p class="src">Fuente: Plan de Acción 2026 del Plan Municipal de Desarrollo (ER-SPL-PL-PLA-002), portal web institucional. Valores en millones de pesos.</p></div>`;
+}
+function inspector(medidos){
+  const pend=S.mediciones.filter(m=>m.estado==="En revisión").length+S.aportes.filter(a=>a.estado==="Pendiente de revisión").length;
+  const row=(l,v)=>'<div class="stat-row"><span>'+l+'</span><b>'+v+'</b></div>';
+  return `<aside class="inspector"><div class="panel"><h3>Acciones rápidas</h3><div class="qa">
+    <a href="#aportar" data-tipo="medicion">Reportar medición <kbd>→</kbd></a>
+    <button type="button" data-qa="doc">Registrar documento <kbd>+</kbd></button>
+    <button type="button" data-qa="acta">Registrar sesión de Mesa <kbd>+</kbd></button>
+    <a href="#revision">Revisar pendientes <kbd>${pend}</kbd></a>
+    <button type="button" data-qa="exp"${C.dl?"":" disabled"}>Exportar para el subdominio <kbd>↓</kbd></button></div></div>
+    <div class="panel"><h3>Resumen</h3><div>${row("Metas del Plan",S.indicadores.length)}${row("Con medición validada",medidos)}${row("Documentos del PEM",pemDocs().length)}${row("Fuentes inventariadas",S.fuentes.length)}${row("Actas de Mesa Técnica",S.actas.length)}${row("Pendientes de revisión",pend)}</div></div></aside>`;
+}
+vTableros.after=()=>{
+  document.querySelectorAll("a[data-tipo]").forEach(a=>a.onclick=()=>{UI.aporteTipo=a.dataset.tipo});
+  document.querySelectorAll("[data-qa]").forEach(b=>b.onclick=()=>{const k=b.dataset.qa;if(k==="doc")editDoc(null);else if(k==="acta"){go("mesa");const n=$("#newActa");if(n)n.click()}else if(k==="exp"){go("revision");const e=$("#exp");if(e)e.click()}});
+  const d=$("#dlAll");if(d)d.onclick=()=>go("datos");
+  document.querySelectorAll("[data-doc-open]").forEach(a=>a.onclick=e=>{e.preventDefault();openDoc(a.dataset.docOpen)});
+};
+
+/* ---------- Datos abiertos ---------- */
+function csv(rows){return "﻿"+rows.map(r=>r.map(v=>{const s=String(v??"");return /[;"\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}).join(";")).join("\r\n")}
+async function saveFile(name,text,type){
+  if(C.dl){try{await C.dl.save({filename:name,data:text});toast("Archivo "+name+" listo")}catch(e){toast(e&&e.code==="declined"?"Descarga cancelada":"No se pudo descargar el archivo")}return}
+  try{const u=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000)}catch(e){toast("La descarga no está disponible en esta vista")}
+}
+const DATASETS=[
+  ["metas","Metas del Plan de Desarrollo","Las metas de producto con dependencia, eje, indicador, meta 2028, ODS, proyecto BPIN, recursos 2026 del plan de acción y última medición validada.",()=>[["n_meta","dependencia","eje","programa","codigo_mga","indicador","unidad","meta_2028","ods","bpin","proyecto","meta_programada_2026","apropiado_2026_cop","fuente_financiacion","ultimo_corte","ultimo_valor"],...S.indicadores.map(i=>{const m=lastMed(i.n),p=i.pa||{};return [i.n,i.dep,i.eje,i.programa,i.mga,i.indicador,i.unidad,i.meta,i.ods,p.bpin||"",p.proyecto||"",p.prog??"",p.apropiado??"",p.fuente||"",m?m.periodo:"",m?m.valor:""]})]],
+  ["fuentes","Inventario de fuentes de datos","Registros administrativos y fuentes externas con su dependencia, tipo, custodio, sistema y periodicidad.",()=>[["id","fuente","dependencia","tipo","indicadores","custodio","sistema","periodicidad","estado"],...S.fuentes.map(f=>[f.id,f.nombre,f.dependencia,f.tipo,f.indicadores,f.custodio,f.sistema,f.periodicidad,f.estado])]],
+  ["documentos","Índice de documentos","Documentos de acceso público con su código del índice maestro, serie, versión y estado.",()=>[["codigo","titulo","dependencia","serie","eje","vigencia","version","estado"],...S.documentos.filter(d=>d.acceso==="Pública").map(d=>[d.codigo,d.titulo,d.dependencia,d.serie,d.eje,d.vigencia,d.version,d.estado])]]
+];
+function vDatos(){
+  const n={metas:S.indicadores.length,fuentes:S.fuentes.length,documentos:S.documentos.filter(d=>d.acceso==="Pública").length};
+  return `<div class="head"><div><div class="eyebrow">Ley 1712 de 2014 · Plan de Datos Abiertos</div><h2>Datos <em class="serif">abiertos</em></h2><p>Conjuntos de datos para descargar y reutilizar libremente. Formato CSV separado por punto y coma, codificación UTF-8.</p></div></div>
+  <div class="datos">${DATASETS.map(([k,t,d])=>`<div class="panel"><div style="width:44px;height:44px;border-radius:12px;background:var(--g100);color:var(--accent);display:grid;place-items:center">${ic(k==="metas"?"chart":k==="fuentes"?"db":"file",22)}</div><div><h3>${t}</h3><p style="margin:8px 0 0;color:var(--mu);font-size:13px">${d}</p></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto"><span class="pill info">${n[k]} registros</span><button class="btn primary sm" data-ds="${k}">${ic("down",14)}Descargar CSV</button></div>${dcMeta(k,t,d,n[k])}</div>`).join("")}</div>
+  <div class="note info">Cada conjunto lleva sus metadatos Dublin Core (título, fuente, fecha, cobertura y demás). Los mismos campos se diligencian al publicar en datos.gov.co, con la ficha ER-SPL-DI-GIE-001. <span class="pend">[PENDIENTE: enlace al portal nacional]</span></div>`;
+}
+vDatos.after=()=>{document.querySelectorAll("[data-ds]").forEach(b=>b.onclick=()=>{const ds=DATASETS.find(x=>x[0]===b.dataset.ds);saveFile("el-rosal-"+ds[0]+"-"+today()+".csv",csv(ds[3]()),"text/csv")})};
+
+/* Metadatos Dublin Core por conjunto de datos */
+const DCM={metas:["Secretaría de Planeación","Planeación; Plan de Desarrollo; indicadores; ODS","2024–2027 (corte trimestral)","Trimestral"],fuentes:["Secretaría de Planeación","Registros administrativos; inventario; fuentes de datos","2026–2027","Semestral"],documentos:["Jefatura de Prensa y TIC","Gestión documental; índice maestro; transparencia","2023–2027","Mensual"]};
+function dcMeta(k,t,d,n){const m=DCM[k]||["Alcaldía de El Rosal","","",""];
+  const R=[["Título (title)",t],["Descripción (description)",d],["Creador (creator)",m[0]],["Editor (publisher)","Alcaldía Municipal de El Rosal, Cundinamarca"],["Tema (subject)",m[1]],["Fecha (date)",S.config.actualizado||today()],["Cobertura espacial (coverage)","El Rosal, Cundinamarca · DIVIPOLA 25260"],["Cobertura temporal (coverage)",m[2]],["Periodicidad",m[3]],["Fuente (source)","Portal El Rosal en Cifras · ER-PTIC-SW-GIE-001"],["Formato (format)","text/csv; separador punto y coma; UTF-8"],["Idioma (language)","es-CO"],["Identificador (identifier)","el-rosal-"+k],["Derechos (rights)","CC BY 4.0 · Pública (Ley 1712 de 2014)"],["Registros",String(n)]];
+  return `<details class="dcm"><summary>Metadatos (Dublin Core)</summary><dl class="ficha" style="margin-top:8px">${R.map(([a,b])=>`<dt>${h(a)}</dt><dd>${h(b)}</dd>`).join("")}</dl></details>`}
+/* Documentos */
+function filtDocs(){
+  const q=UI.docQ.toLowerCase();
+  return S.documentos.filter(d=>(UI.docScope==="todo"||d.eje==="GIE")&&(!UI.docSerie||d.serie===UI.docSerie)&&(!UI.docEstado||d.estado===UI.docEstado)&&(!q||[d.codigo,d.titulo,d.claves,d.dependencia].join(" ").toLowerCase().includes(q)));
+}
+function vDocumentos(){
+  const L=filtDocs(),base=UI.docScope==="todo"?S.documentos:pemDocs();
+  return `<div class="head"><div><div class="eyebrow">Índice maestro ER-PTIC-IN-GDO-001</div><h2>Documentos</h2><p>Cada documento lleva el código del índice maestro (dependencia, serie, eje, consecutivo). Los borradores muestran su estado y lo que falta por diligenciar.</p></div>
+    ${ED()?'<button class="btn primary" id="newDoc">Registrar documento</button>':LIVE()?'<a class="btn" href="#aportar" data-tipo="documento">Proponer un documento</a>':""}</div>
+  <div class="filters">
+    <div class="seg" role="group" aria-label="Alcance"><button data-scope="pem" aria-pressed="${UI.docScope==="pem"}">PEM (${pemDocs().length})</button><button data-scope="todo" aria-pressed="${UI.docScope==="todo"}">Todo el archivo (${S.documentos.length})</button></div>
+    <input type="search" id="docQ" placeholder="Código, título o palabra clave" value="${h(UI.docQ)}" aria-label="Buscar documentos">
+    <select id="docSerie" aria-label="Serie">${opt(uniq(base.map(d=>d.serie)),UI.docSerie,"Todas las series")}</select>
+    <select id="docEstado" aria-label="Estado">${opt(uniq(base.map(d=>d.estado)),UI.docEstado,"Todos los estados")}</select>
+    <span class="count">${L.length} documentos</span>
+  </div>
+  ${L.length?`<div class="tablewrap"><table><thead><tr><th>Código</th><th>Documento</th><th>Serie</th><th>Versión</th><th>Estado</th><th>Acceso</th><th></th></tr></thead><tbody>
+  ${L.map(d=>`<tr class="click" data-doc="${h(d.codigo)}"><td class="mono">${h(d.codigo)}</td><td>${h(d.titulo)}<span class="sub">${h(DEPS[d.dependencia]||d.dependencia)}</span></td><td>${h(SERIES[d.serie]||d.serie)}</td><td class="num">v${h(d.version)}</td><td>${estadoPill(d.estado)}</td><td>${h(d.acceso)}</td><td>${d.enlace||d.asset?'<span class="pill info">Abrir</span>':""}</td></tr>`).join("")}
+  </tbody></table></div>`:'<div class="empty">'+(S.documentos.length?"Ningún documento coincide con los filtros.":"El índice de documentos se está cargando.")+'</div>'}`;
+}
+vDocumentos.after=()=>{
+  document.querySelectorAll("[data-scope]").forEach(b=>b.onclick=()=>{UI.docScope=b.dataset.scope;UI.docSerie="";UI.docEstado="";render()});
+  bindFilter("docQ","docQ");bindFilter("docSerie","docSerie");bindFilter("docEstado","docEstado");
+  document.querySelectorAll("tr[data-doc]").forEach(r=>r.onclick=()=>openDoc(r.dataset.doc));
+  const n=$("#newDoc");if(n)n.onclick=()=>editDoc(null);
+  document.querySelectorAll("a[data-tipo]").forEach(a=>a.onclick=()=>{UI.aporteTipo=a.dataset.tipo});
+};
+function bindFilter(id,key){const el=document.getElementById(id);if(!el)return;el.addEventListener(el.tagName==="SELECT"?"change":"input",()=>{UI[key]=el.value;render()})}
+function openSide(html,after){const d=$("#side");$("#sideInner").innerHTML='<button class="btn sm close" id="sideX">Cerrar</button>'+html;$("#sideX").onclick=()=>d.close();if(!d.open)d.showModal();if(after)after()}
+$("#side").addEventListener("click",e=>{if(e.target.id==="side")e.target.close()});
+function openDoc(code){
+  const d=S.documentos.find(x=>x.codigo===code);if(!d)return;
+  const link=d.asset?"/_blob/"+d.asset:d.enlace;
+  openSide(`<div><div class="eyebrow mono">${h(d.codigo)}</div><h2 style="font-size:1.35rem;margin-top:6px">${h(d.titulo)}</h2></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">${estadoPill(d.estado)}<span class="pill">v${h(d.version)}</span><span class="pill">${h(d.acceso)}</span></div>
+  <dl class="ficha">
+    <dt>Dependencia</dt><dd>${h(DEPS[d.dependencia]||d.dependencia)}</dd>
+    <dt>Serie</dt><dd>${h(SERIES[d.serie]||d.serie)}</dd>
+    <dt>Eje / política</dt><dd>${h(d.eje)}</dd>
+    <dt>Vigencia</dt><dd>${h(d.vigencia)}</dd>
+    <dt>Código TRD/SIG</dt><dd>${pend(d.sig)}</dd>
+    <dt>Ubicación</dt><dd>${pend(d.ubicacion)}</dd>
+    <dt>Palabras clave</dt><dd>${h(d.claves)||"—"}</dd>
+    <dt>Observaciones</dt><dd>${pend(d.obs||"—")}</dd>
+  </dl>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">${link?`<a class="btn primary" href="${h(link)}" target="_blank" rel="noopener">Abrir documento</a>`:'<span class="note">Sin enlace todavía. Cargue el soporte o registre la URL de Drive.</span>'}${ED()?'<button class="btn" id="edDoc">Editar ficha</button>':""}</div>`,()=>{const b=$("#edDoc");if(b)b.onclick=()=>editDoc(code)});
+}
+function editDoc(code){
+  const d=code?S.documentos.find(x=>x.codigo===code):{codigo:"ER-",version:"0.1",estado:"Borrador",acceso:"Pública",vigencia:"2026",eje:"GIE"};
+  openSide(`<h2 style="font-size:1.3rem">${code?"Editar ficha":"Registrar documento"}</h2>
+  <form class="grid" id="fDoc">
+    <label class="f full">Código del índice maestro<input id="dCod" required value="${h(d.codigo)}" ${code?"readonly":""} pattern="ER-[A-Z]+-[A-Z]{2}-[A-Z]+-\\d{3}"><small>Formato ER-DEP-SERIE-EJE-NNN</small></label>
+    <label class="f full">Título<input id="dTit" required value="${h(d.titulo)}"></label>
+    <label class="f">Dependencia<select id="dDep">${Object.keys(DEPS).map(k=>`<option value="${k}"${d.dependencia===k?" selected":""}>${h(DEPS[k])}</option>`).join("")}</select></label>
+    <label class="f">Serie<select id="dSer">${Object.keys(SERIES).map(k=>`<option value="${k}"${d.serie===k?" selected":""}>${k} · ${h(SERIES[k])}</option>`).join("")}</select></label>
+    <label class="f">Eje / política<input id="dEje" value="${h(d.eje)}"></label>
+    <label class="f">Vigencia<input id="dVig" value="${h(d.vigencia)}"></label>
+    <label class="f">Versión<input id="dVer" value="${h(d.version)}"></label>
+    <label class="f">Estado<select id="dEst">${opt(["Borrador","En revisión","Aprobado","Publicado","Obsoleto"],d.estado)}</select></label>
+    <label class="f">Nivel de acceso<select id="dAcc">${opt(["Pública","Pública clasificada","Pública reservada"],d.acceso)}</select></label>
+    <label class="f">Código TRD/SIG<input id="dSig" value="${h(d.sig)}"></label>
+    <label class="f full">Enlace (Drive, sitio web o documento en línea)<input id="dEnl" type="url" value="${h(d.enlace)}" placeholder="https://"></label>
+    ${C.assets?'<label class="f full">o cargar el soporte (PDF o imagen, máx. 20 MB)<input id="dFile" type="file" accept="application/pdf,image/*"></label>':""}
+    <label class="f full">Observaciones<textarea id="dObs">${h(d.obs)}</textarea></label>
+    <div class="full" style="display:flex;gap:8px"><button class="btn primary" id="dSave">Guardar</button></div>
+  </form>`,()=>{
+    $("#fDoc").addEventListener("submit",async e=>{e.preventDefault();const b=$("#dSave");b.disabled=true;
+      const rec=Object.assign({},d,{codigo:$("#dCod").value.trim(),titulo:$("#dTit").value.trim(),dependencia:$("#dDep").value,serie:$("#dSer").value,eje:$("#dEje").value.trim(),vigencia:$("#dVig").value.trim(),version:$("#dVer").value.trim(),estado:$("#dEst").value,acceso:$("#dAcc").value,sig:$("#dSig").value.trim(),enlace:$("#dEnl").value.trim(),obs:$("#dObs").value.trim(),actualizado:today()});
+      delete rec._id;
+      const f=$("#dFile");if(f&&f.files[0]){try{const up=await C.assets.upload(f.files[0]);rec.asset=up.id}catch(err){toast("No se pudo cargar el archivo: "+(err&&err.code||"error"));b.disabled=false;return}}
+      if(await write("documentos",rec.codigo,rec)){toast("Documento guardado");openDoc(rec.codigo)}else b.disabled=false});
+  });
+}
+
+/* Indicadores */
+function filtInd(){const q=UI.indQ.toLowerCase();return S.indicadores.filter(i=>(!UI.indEje||i.eje===UI.indEje)&&(!UI.indDep||i.dep===UI.indDep)&&(!UI.indOds||String(i.ods)===UI.indOds)&&(!q||[i.n,i.indicador,i.producto,i.programa,i.mga,i.resultado].join(" ").toLowerCase().includes(q)))}
+function vIndicadores(){
+  const L=filtInd();
+  return `<div class="head"><div><div class="eyebrow">Plan Indicativo 2024–2027 · Manual ER-SPL-MA-GIE-001</div><h2>Indicadores y metas</h2><p>Las ${S.indicadores.length} metas de producto del Plan de Desarrollo, con el ODS propuesto y el avance frente a la meta del cuatrienio. El avance se calcula con la última medición validada.</p></div>${LIVE()?'<a class="btn primary" href="#aportar" data-tipo="medicion">Reportar una medición</a>':""}</div>
+  <div class="filters">
+    <input type="search" id="indQ" placeholder="Indicador, producto, programa o código MGA" value="${h(UI.indQ)}" aria-label="Buscar indicadores">
+    <select id="indEje" aria-label="Eje">${opt(uniq(S.indicadores.map(i=>i.eje)),UI.indEje,"Todos los ejes")}</select>
+    <select id="indDep" aria-label="Dependencia">${opt(uniq(S.indicadores.map(i=>i.dep)),UI.indDep,"Todas las dependencias")}</select>
+    <select id="indOds" aria-label="ODS"><option value="">Todos los ODS</option>${Object.keys(ODS_N).map(k=>`<option value="${k}"${UI.indOds===k?" selected":""}>ODS ${k} · ${h(ODS_N[k])}</option>`).join("")}</select>
+    ${UI.indEje||UI.indDep||UI.indOds||UI.indQ?'<button class="btn ghost sm" id="indClr">Limpiar filtros</button>':""}
+    <span class="count">${L.length} metas</span>
+  </div>
+  ${L.length?`<div class="tablewrap"><table><thead><tr><th>N°</th><th>Indicador de producto</th><th>Dependencia</th><th>ODS</th><th>Meta 2028</th><th>Apropiado 2026</th><th>Último valor</th><th>Avance</th></tr></thead><tbody>
+  ${L.map(i=>{const m=lastMed(i.n);return `<tr class="click" data-ind="${i.n}"><td class="num">${i.n}</td><td>${h(i.indicador)}<span class="sub">${h(i.programa)} · MGA ${h(i.mga)}</span></td><td>${h(depShort(i.dep))}</td><td>${ods(i.ods)}</td><td class="num">${fmt(i.meta)} <span class="sub">${h(i.unidad||"[PENDIENTE unidad]")}</span></td><td class="num">${i.pa?(i.pa.apropiado?mill(i.pa.apropiado):'<span class="pend">sin apropiación</span>')+(i.pa.prog!=null?'<span class="sub">Meta 2026: '+fmt(i.pa.prog)+'</span>':""):'<span class="sub">no está en el plan</span>'}</td><td class="num">${m?fmt(m.valor)+'<span class="sub">'+h(m.periodo)+'</span>':'<span class="sub">sin reporte</span>'}</td><td>${prog(avance(i))}</td></tr>`}).join("")}
+  </tbody></table></div>`:'<div class="empty">'+(S.indicadores.length?"Ninguna meta coincide con los filtros.":"El catálogo de metas se está cargando.")+'</div>'}
+  <p class="source">Fuente: ${h(S.catFuente||"Plan Indicativo 2024–2027 y matriz metas–ODS ER-SPL-MT-GIE-002")}. El ODS es una propuesta técnica por validar con cada secretaría. Semáforo: verde ≥ 90 %, amarillo 60–89 %, rojo &lt; 60 % de la meta 2028 (umbrales por validar en el manual).</p>`;
+}
+vIndicadores.after=()=>{
+  ["indQ","indEje","indDep","indOds"].forEach(k=>bindFilter(k,k));
+  const c=$("#indClr");if(c)c.onclick=()=>{UI.indQ=UI.indEje=UI.indDep=UI.indOds="";render()};
+  document.querySelectorAll("tr[data-ind]").forEach(r=>r.onclick=()=>openInd(Number(r.dataset.ind)));
+  document.querySelectorAll("a[data-tipo]").forEach(a=>a.onclick=()=>{UI.aporteTipo=a.dataset.tipo});
+};
+function spark(meds,meta){
+  if(!meds.length)return "";
+  const W=520,H=150,P=34,max=Math.max(Number(meta)||0,...meds.map(m=>Number(m.valor)||0))*1.1||1;
+  const x=i=>P+(meds.length===1?(W-2*P)/2:i*(W-2*P)/(meds.length-1)),y=v=>H-24-(v/max)*(H-44);
+  const pts=meds.map((m,i)=>x(i)+","+y(Number(m.valor)||0)).join(" ");
+  const last=meds[meds.length-1];
+  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Serie de mediciones">
+  ${meta?`<line x1="${P}" x2="${W-P}" y1="${y(meta)}" y2="${y(meta)}" stroke="var(--warn)" stroke-dasharray="4 4"/><text x="${W-P}" y="${y(meta)-5}" text-anchor="end">Meta 2028: ${fmt(meta)}</text>`:""}
+  <line x1="${P}" x2="${W-P}" y1="${H-24}" y2="${H-24}" stroke="var(--line)"/>
+  <polygon points="${x(0)},${H-24} ${pts} ${x(meds.length-1)},${H-24}" fill="var(--accent)" fill-opacity=".08"/>
+  <defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".35"/><stop offset="1" stop-color="var(--accent)"/></linearGradient></defs><polyline points="${pts}" fill="none" stroke="url(#sg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  ${meds.map((m,i)=>`<circle cx="${x(i)}" cy="${y(Number(m.valor)||0)}" r="${i===meds.length-1?4:2.5}" fill="${i===meds.length-1?"var(--accent)":"var(--surface)"}" stroke="var(--accent)" stroke-width="1.5" data-tip="${h(m.periodo)}: ${fmt(m.valor)}"/><text x="${x(i)}" y="${H-8}" text-anchor="middle">${h(m.periodo)}</text>`).join("")}
+  <text class="lbl" x="${x(meds.length-1)}" y="${y(Number(last.valor)||0)-9}" text-anchor="middle">${fmt(last.valor)}</text>
+  </svg></div>`;
+}
+function openInd(n){
+  const i=S.indicadores.find(x=>x.n==n);if(!i)return;
+  const meds=S.mediciones.filter(m=>m.n==n).sort((a,b)=>String(a.periodo).localeCompare(String(b.periodo)));
+  const pub=meds.filter(m=>m.estado==="Publicado");
+  openSide(`<div><div class="eyebrow">Meta ${i.n} · Indicador MGA ${h(i.mga)}</div><h2 style="font-size:1.3rem;margin-top:6px">${h(i.indicador)}</h2></div>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${ods(i.ods)}<span>${h(ODS_N[i.ods]||"")} · meta ${h(i.odsMeta)} (${h(i.relacion||"por validar")})</span></div>
+  ${prog(avance(i))}
+  ${pub.length?spark(pub,i.meta):'<div class="empty">Sin mediciones validadas. '+(LIVE()?"El responsable puede reportar la primera abajo.":"")+'</div>'}
+  <dl class="ficha">
+    <dt>Producto (meta PMD)</dt><dd>${h(i.producto)}</dd>
+    <dt>Meta de resultado</dt><dd>${h(i.resultado)}</dd>
+    <dt>Programa</dt><dd>${h(i.programa)}</dd>
+    <dt>Eje</dt><dd>${h(i.eje)}</dd>
+    <dt>Dependencia líder</dt><dd>${h(i.dep)}</dd>
+    <dt>Unidad de medida</dt><dd>${pend(i.unidad)}</dd>
+    <dt>Meta 2028</dt><dd class="num">${fmt(i.meta)}</dd>
+    <dt>Ficha técnica</dt><dd>${pend(i.ficha||"[PENDIENTE: ficha ER-[DEP]-FT-GIE-NNN]")}</dd>
+  </dl>
+  <h3 style="font-size:15px;margin-top:4px">Plan de acción 2026 <span style="font-weight:500;color:var(--mu);font-size:12px">· ER-SPL-PL-PLA-002</span></h3>
+  ${i.pa?`<dl class="ficha">
+    <dt>Proyecto</dt><dd>${h(i.pa.proyecto)}<span class="sub" style="display:block;color:var(--mu);font-size:12px">BPIN ${h(i.pa.bpin)}</span></dd>
+    <dt>Meta programada 2026</dt><dd class="num">${i.pa.prog!=null?fmt(i.pa.prog)+(i.pa.orient?" · "+h(i.pa.orient):""):pend("[PENDIENTE: programar en el plan de acción]")}</dd>
+    <dt>Actividades</dt><dd>${h(i.pa.actividad)||"—"}</dd>
+    <dt>Evidencia esperada</dt><dd>${h(i.pa.evidencia)||"—"}</dd>
+    <dt>Periodo</dt><dd class="num">${h(i.pa.inicio)} a ${h(i.pa.fin)}</dd>
+    <dt>Recursos apropiados</dt><dd class="num">${i.pa.apropiado?mill(i.pa.apropiado)+" <span style='color:var(--mu)'>("+Number(i.pa.apropiado).toLocaleString("es-CO")+" COP)</span>":pend("[PENDIENTE: sin apropiación]")}</dd>
+    <dt>Fuente de financiación</dt><dd>${h(i.pa.fuente)||"—"}</dd>
+    <dt>Ejecución 2026</dt><dd>${i.pa.ej?fmt(i.pa.ej):pend("[PENDIENTE: sin reporte de ejecución]")}</dd>
+    <dt>Contrato (SECOP)</dt><dd>${i.pa.secop?`<a href="${h(i.pa.secop)}" target="_blank" rel="noopener">Ver contrato</a>`:pend("[PENDIENTE: enlace SECOP]")}</dd>
+  </dl>`:'<div class="note">Esta meta no aparece en el Plan de Acción 2026 publicado.</div>'}
+  ${meds.length?`<div class="tablewrap"><table><thead><tr><th>Corte</th><th>Valor</th><th>Fuente</th><th>Estado</th></tr></thead><tbody>${meds.slice().reverse().map(m=>`<tr><td class="num">${h(m.periodo)}</td><td class="num">${fmt(m.valor)}</td><td>${h(m.fuente)}<span class="sub">${h(nameOf(m.autor))}</span></td><td>${estadoPill(m.estado)}</td></tr>`).join("")}</tbody></table></div>`:""}
+  ${LIVE()?medForm(i):""}`,()=>bindMedForm(i));
+}
+function periodos(){const o=[];for(let y=2024;y<=2027;y++)for(let t=1;t<=4;t++)o.push(y+"-T"+t);return o}
+function curPeriodo(){const d=new Date();return d.getFullYear()+"-T"+(Math.floor(d.getMonth()/3)+1)}
+function medForm(i){return `<form class="grid panel" id="fMed"><h3 class="full">Reportar medición</h3>
+  ${i?"":`<label class="f full">Meta<select id="mN" required><option value="">Seleccione la meta…</option>${S.indicadores.map(x=>`<option value="${x.n}">${x.n} · ${h(x.indicador.slice(0,90))} (${h(depShort(x.dep))})</option>`).join("")}</select></label>`}
+  <label class="f">Corte (año-trimestre)<select id="mPer">${opt(periodos(),curPeriodo())}</select></label>
+  <label class="f">Valor acumulado al corte<input id="mVal" type="number" step="any" required inputmode="decimal"><small>${i?"Unidad: "+h(i.unidad||"[PENDIENTE]")+" · meta 2028: "+fmt(i.meta):"En la unidad de la meta"}</small></label>
+  <label class="f full">Fuente o registro de soporte<input id="mFue" required placeholder="Ej. RA-05 Registro de vacunación, informe SIVIGILA"></label>
+  <label class="f full">Enlace a la evidencia<input id="mEnl" type="url" placeholder="https://drive.google.com/…"></label>
+  <label class="f full">Observaciones<textarea id="mObs" placeholder="Cambios metodológicos, rezagos, desagregaciones disponibles"></textarea></label>
+  <div class="full"><button class="btn primary" id="mSave">Enviar a revisión</button></div></form>`}
+function bindMedForm(i){
+  const f=$("#fMed");if(!f)return;
+  f.addEventListener("submit",async e=>{e.preventDefault();const b=$("#mSave");b.disabled=true;
+    const n=i?i.n:Number($("#mN").value);
+    const rec={n,periodo:$("#mPer").value,valor:Number($("#mVal").value),fuente:$("#mFue").value.trim(),enlace:$("#mEnl").value.trim(),obs:$("#mObs").value.trim(),autor:C.uid||null,estado:ED()?"Publicado":"En revisión",ts:new Date().toISOString()};
+    if(await write("mediciones",null,rec)){toast(ED()?"Medición publicada":"Medición enviada a revisión de Planeación");if(i)openInd(n);else{f.reset();render()}}else b.disabled=false});
+}
+
+/* Directorio */
+const ROLES=["Productor","Usuario","Productor y usuario"];
+function dirPublic(){return !LIVE()}
+function vDirectorio(){
+  const q=(UI.dirQ||"").toLowerCase(),t=UI.dirT||"todos";
+  const L=S.directorio.filter(d=>(t==="todos"||d.tipo===t)&&(!q||[d.entidad,d.dependencia,d.cargo,d.rol,d.nombre,d.notas].join(" ").toLowerCase().includes(q))).sort((a,b)=>(a.tipo===b.tipo?0:a.tipo==="interno"?-1:1)||String(a.entidad).localeCompare(String(b.entidad),"es"));
+  const nI=S.directorio.filter(d=>d.tipo==="interno").length,nE=S.directorio.length-nI;
+  const pub=dirPublic();
+  const dom=u=>String(u||"").replace(/^https?:\/\/(www\.)?/,"").split("/")[0];
+  const card=d=>{const nl=(d.enlace&&d.enlace.u?1:0)+(d.recursos||[]).length,go=d.enlace&&d.enlace.u?d.enlace:(d.sitio?{t:"Ir al sitio web",u:d.sitio}:null);
+    const title=d.tipo==="interno"?d.dependencia:d.entidad;
+    return `<div class="fc dfc" role="button" tabindex="0" aria-label="${h(title)}"><div class="inr">
+    <div class="face front dfront">
+      <div class="dtop"><span class="pill ${d.rol==="Usuario"?"info":d.rol==="Productor"?"ok":"warn"}">${h(d.rol||"")}</span><span class="dtag">${d.tipo==="interno"?"Interno":"Externo"}</span></div>
+      <h3>${h(title)}</h3>
+      <div class="dmeta">${d.tipo==="interno"?`<span>${h(d.entidad)}</span>`:""}${d.sitio?`<span>${ic("arrow",12,2)}${h(dom(d.sitio))}</span>`:""}${d.correo?`<span class="sel">${h(d.correo)}</span>`:""}${nl?`<span class="dnl">${nl} ${nl===1?"enlace estadístico":"enlaces estadísticos"}</span>`:""}</div>
+    </div>
+    <div class="face back dback">
+      <span class="num">QUÉ ENCUENTRA</span>
+      <p>${h(d.info||d.notas||"Información por completar.")}</p>
+      ${go?`<a class="ex" href="${h(go.u)}"${go.u.startsWith("#")?"":' target="_blank" rel="noopener"'}>${h(go.t)} ${ic("arrow",14,2)}</a>`:'<span class="dnone">Sin enlace estadístico todavía</span>'}
+      ${(d.recursos||[]).length?`<div class="dres">${d.recursos.slice(0,4).map(r=>`<a href="${h(r.u)}" target="_blank" rel="noopener">${h(r.t)}</a>`).join("")}</div>`:""}
+      ${LIVE()?`<button class="dedit" data-ed="${h(d._id)}">Actualizar</button>`:""}
+    </div></div></div>`};
+  return `<div class="head"><div><div class="eyebrow">Ecosistema de datos · POL17-06</div><h2>Directorio de <em class="serif">actores</em></h2><p>Productores y usuarios de la información estadística del municipio. Pase el cursor o toque una tarjeta para ver qué información encuentra y el enlace a sus estadísticas.</p></div>${LIVE()?'<button class="btn primary" id="dirNew">'+ic("plus",16)+'Agregar actor</button>':""}</div>
+  <div class="filters"><div class="seg" role="group" aria-label="Tipo">${[["todos","Todos ("+S.directorio.length+")"],["interno","Internos ("+nI+")"],["externo","Externos ("+nE+")"]].map(([k,l])=>`<button data-dt="${k}" aria-pressed="${t===k}">${l}</button>`).join("")}</div>
+    <input type="search" id="dirQ" placeholder="Entidad, dependencia o cargo" value="${h(UI.dirQ||"")}" aria-label="Buscar en el directorio"><span class="count">${L.length} actores</span></div>
+  ${L.length?`<div class="dgrid">${L.map(card).join("")}</div>`:'<div class="empty">'+(S.directorio.length?"Ningún actor coincide con la búsqueda.":"El directorio se está cargando.")+'</div>'}
+  <p class="src">Fuente: matriz de caracterización ER-SPL-MT-GIE-001, infografía del ecosistema ER-SPL-IM-GIE-001 y designación de enlaces. Los datos marcados [PENDIENTE] se completan con el oficio de designación.</p>`;
+}
+vDirectorio.after=()=>{
+  document.querySelectorAll("[data-dt]").forEach(b=>b.onclick=()=>{UI.dirT=b.dataset.dt;render()});
+  bindFilter("dirQ","dirQ");
+  document.querySelectorAll("[data-ed]").forEach(b=>b.onclick=e=>{e.stopPropagation();editDir(b.dataset.ed)});
+  const hov=matchMedia("(hover:hover)").matches;
+  document.querySelectorAll(".dfc").forEach(c=>{c.addEventListener("click",e=>{if(e.target.closest("a,button"))return;if(!hov)c.classList.toggle("on")});c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();c.classList.toggle("on")}})});
+  const n=$("#dirNew");if(n)n.onclick=()=>editDir(null);
+};
+function editDir(id){
+  const d=id?S.directorio.find(x=>x._id===id):{tipo:"externo",rol:"Productor y usuario",recursos:[]};if(!d)return;
+  const clean=v=>String(v||"").startsWith("[PENDIENTE")?"":(v||"");
+  openSide(`<h2 style="font-size:20px">${id?"Actualizar contacto":"Agregar actor"}</h2>
+  <form class="grid" id="fDir">
+    <label class="f">Tipo<select id="dTipo">${opt(["interno","externo"],d.tipo)}</select></label>
+    <label class="f">Rol en el ecosistema<select id="dRol">${opt(ROLES,d.rol)}</select></label>
+    <label class="f full">Entidad<input id="dEnt" required value="${h(d.entidad)}"></label>
+    <label class="f full">Dependencia u oficina<input id="dDep2" value="${h(d.dependencia)}"></label>
+    <label class="f">Cargo<input id="dCar" value="${h(clean(d.cargo))}"></label>
+    <label class="f">Nombre<input id="dNom" value="${h(clean(d.nombre))}"><small>Solo visible para funcionarios</small></label>
+    <label class="f">Correo institucional<input id="dCor" type="email" value="${h(clean(d.correo))}"></label>
+    <label class="f">Teléfono<input id="dTel" value="${h(clean(d.telefono))}"><small>Solo visible para funcionarios</small></label>
+    <label class="f full">Sitio web<input id="dSit" type="url" value="${h(d.sitio)}" placeholder="https://"></label>
+    <label class="f full">Notas (qué produce o qué usa)<textarea id="dNot">${h(d.notas)}</textarea></label>
+    <div class="full"><button class="btn primary" id="dSave2">Guardar</button></div>
+  </form>`,()=>{
+    $("#fDir").addEventListener("submit",async e=>{e.preventDefault();$("#dSave2").disabled=true;
+      const P=v=>v.trim()||"[PENDIENTE]";
+      const rec={tipo:$("#dTipo").value,rol:$("#dRol").value,entidad:$("#dEnt").value.trim(),dependencia:$("#dDep2").value.trim(),cargo:P($("#dCar").value),nombre:P($("#dNom").value),correo:$("#dCor").value.trim(),telefono:P($("#dTel").value),sitio:$("#dSit").value.trim(),notas:$("#dNot").value.trim(),recursos:d.recursos||[],actualizado:today(),autor:C.uid||null};
+      const key=id||("d-"+rec.entidad.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)+"-"+Date.now().toString(36));
+      if(await write("directorio",key,rec)){toast("Contacto guardado");$("#side").close()}else $("#dSave2").disabled=false});
+  });
+}
+
+/* Fuentes */
+function vFuentes(){
+  const q=UI.fuQ.toLowerCase();const L=S.fuentes.filter(f=>!q||[f.id,f.nombre,f.dependencia,f.indicadores].join(" ").toLowerCase().includes(q));
+  return `<div class="head"><div><div class="eyebrow">Inventario de oferta ER-SPL-IN-GIE-001</div><h2>Fuentes de datos</h2><p>Registros administrativos, fuentes externas y recursos que alimentan los indicadores. Cada enlace completa custodio, sistema y periodicidad en la entrevista de caracterización.</p></div></div>
+  <div class="filters"><input type="search" id="fuQ" placeholder="Buscar fuente o dependencia" value="${h(UI.fuQ)}" aria-label="Buscar fuentes"><span class="count">${L.length} fuentes · tipos: RA registro administrativo · EXT externa · PT Prensa y TIC</span></div>
+  ${L.length?`<div class="tablewrap"><table><thead><tr><th>ID</th><th>Registro o fuente</th><th>Dep.</th><th>Alimenta</th><th>Custodio</th><th>Sistema</th><th>Periodicidad</th><th>Estado</th></tr></thead><tbody>
+  ${L.map(f=>`<tr class="click" data-fu="${h(f.id)}"><td class="mono">${h(f.id)}</td><td>${h(f.nombre)}</td><td>${h(f.dependencia)}</td><td>${h(f.indicadores)}</td><td>${pend(f.custodio)}</td><td>${pend(f.sistema)}</td><td>${pend(f.periodicidad)}</td><td>${estadoPill(f.estado)}</td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">El inventario se está cargando.</div>'}`;
+}
+vFuentes.after=()=>{bindFilter("fuQ","fuQ");document.querySelectorAll("tr[data-fu]").forEach(r=>r.onclick=()=>editFuente(r.dataset.fu))};
+function editFuente(id){
+  const f=S.fuentes.find(x=>x.id===id);if(!f)return;
+  const ro=C.mode!=="vivo";
+  openSide(`<div><div class="eyebrow mono">${h(f.id)}</div><h2 style="font-size:1.3rem;margin-top:6px">${h(f.nombre)}</h2></div>
+  ${ro?`<dl class="ficha"><dt>Dependencia</dt><dd>${h(f.dependencia)}</dd><dt>Alimenta</dt><dd>${h(f.indicadores)}</dd><dt>Custodio</dt><dd>${pend(f.custodio)}</dd><dt>Sistema</dt><dd>${pend(f.sistema)}</dd><dt>Periodicidad</dt><dd>${pend(f.periodicidad)}</dd><dt>Estado</dt><dd>${h(f.estado)}</dd></dl>`:
+  `${ED()?"":'<p class="note info">Sus cambios quedan como propuesta hasta que Planeación los valide.</p>'}
+  <form class="grid" id="fFu">
+    <label class="f full">Indicadores que alimenta<input id="fuInd" value="${h(f.indicadores)}"></label>
+    <label class="f">Custodio (cargo)<input id="fuCus" value="${h(String(f.custodio).startsWith("[PENDIENTE")?"":f.custodio)}" placeholder="Ej. Profesional universitario de Salud"></label>
+    <label class="f">Sistema o ubicación<input id="fuSis" value="${h(String(f.sistema).startsWith("[PENDIENTE")?"":f.sistema)}" placeholder="Ej. PCT, Excel en Drive, SIVIGILA"></label>
+    <label class="f">Periodicidad<select id="fuPer">${opt(["Mensual","Trimestral","Semestral","Anual","Por evento","[PENDIENTE]"],f.periodicidad.replace(" (propuesta)",""))}</select></label>
+    <label class="f">Estado<select id="fuEst">${opt(["Por validar","Validada en entrevista","Fortalecimiento en curso","Activa con diccionario","No aplica"],f.estado)}</select></label>
+    <div class="full"><button class="btn primary" id="fuSave">${ED()?"Guardar":"Enviar propuesta"}</button></div>
+  </form>`}`,()=>{
+    const fm=$("#fFu");if(!fm)return;
+    fm.addEventListener("submit",async e=>{e.preventDefault();$("#fuSave").disabled=true;
+      const ch={indicadores:$("#fuInd").value.trim(),custodio:$("#fuCus").value.trim()||"[PENDIENTE]",sistema:$("#fuSis").value.trim()||"[PENDIENTE]",periodicidad:$("#fuPer").value,estado:$("#fuEst").value};
+      if(ED()){if(await write("fuentes",id,ch,true)){toast("Fuente actualizada");$("#side").close()}}
+      else if(await write("aportes",null,{tipo:"fuente",ref:id,cambios:ch,resumen:"Actualizar "+id+" "+f.nombre,autor:C.uid,estado:"Pendiente de revisión",ts:new Date().toISOString()})){toast("Propuesta enviada a revisión");$("#side").close()}
+    });
+  });
+}
+
+/* Mesa Técnica */
+function vMesa_old(){
+  const L=S.actas.slice().sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+  return `<div class="head"><div><div class="eyebrow">Proyecto de decreto ER-SPL-AC-GIE-002</div><h2>Mesa Técnica de Información Estadística</h2><p>Instancia que aprueba el plan, valida las cifras antes de publicarlas y hace seguimiento trimestral. Sesiona cada tres meses; las actas se codifican desde ER-SPL-AC-GIE-003.</p></div>${ED()?'<button class="btn primary" id="newActa">Registrar sesión</button>':""}</div>
+  <div class="cols">
+    <div class="panel"><h3>Integrantes</h3>
+      <dl class="ficha"><dt>Preside</dt><dd>Secretaría de Planeación</dd><dt>Secretaría técnica</dt><dd>Jefatura de Prensa y TIC</dd><dt>Con voto</dt><dd>Secretarías General y de Gobierno, Hacienda, Obras Públicas, Desarrollo Social, Salud y Educación, Desarrollo Económico y Medio Ambiente</dd><dt>Invitados</dt><dd>Control Interno, Empresa de Servicios Públicos, Imdercultur</dd><dt>Enlaces</dt><dd>${pend("[PENDIENTE: designación por dependencia dentro de los 15 días siguientes al decreto]")}</dd><dt>Estado del acto</dt><dd>${pend("Proyecto elaborado · [PENDIENTE: revisión jurídica y firma]")}</dd></dl>
+    </div>
+    <div class="panel"><h3>Calendario de sesiones</h3>
+      <ul class="feed">${[["Instalación","nov 2026"],["Seguimiento T1","feb 2027"],["Seguimiento T2","may 2027"],["Evaluación anual","jun 2027"],["Seguimiento T3","ago 2027"],["Seguimiento T4","nov 2027"]].map(([s,f])=>`<li><time>${f}</time><span>${s}</span></li>`).join("")}</ul>
+      <p class="source">Calendario propuesto en el plan de seguimiento ER-SPL-PL-GIE-002.</p></div>
+  </div>
+  <div><h3 style="margin-bottom:10px">Actas</h3>
+  ${L.length?`<div class="tablewrap"><table><thead><tr><th>Código</th><th>Fecha</th><th>Tema</th><th>Decisiones</th><th></th></tr></thead><tbody>${L.map(a=>`<tr><td class="mono">${h(a.codigo)}</td><td class="num">${h(a.fecha)}</td><td>${h(a.tema)}</td><td>${h(a.decisiones)}</td><td>${a.enlace?`<a href="${h(a.enlace)}" target="_blank" rel="noopener">Ver acta</a>`:""}</td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">Todavía no hay sesiones registradas. La sesión de instalación se registra aquí con su acta ER-SPL-AC-GIE-003.</div>'}</div>`;
+}
+const vMesa_after_prev=()=>{const b=$("#newActa");if(b)b.onclick=()=>{
+  const nx="ER-SPL-AC-GIE-"+String(3+S.actas.length).padStart(3,"0");
+  openSide(`<h2 style="font-size:1.3rem">Registrar sesión</h2><form class="grid" id="fActa">
+  <label class="f">Código del acta<input id="aCod" required value="${nx}"></label>
+  <label class="f">Fecha<input id="aFec" type="date" required value="${today()}"></label>
+  <label class="f full">Tema u orden del día<input id="aTem" required placeholder="Instalación de la Mesa y aprobación del PEM"></label>
+  <label class="f full">Decisiones y compromisos<textarea id="aDec"></textarea></label>
+  <label class="f full">Asistentes<textarea id="aAsi" placeholder="Dependencia – cargo"></textarea></label>
+  <label class="f full">Enlace al acta firmada<input id="aEnl" type="url" placeholder="https://"></label>
+  <div class="full"><button class="btn primary">Guardar sesión</button></div></form>`,()=>{
+    $("#fActa").addEventListener("submit",async e=>{e.preventDefault();const id=$("#aCod").value.trim();
+      if(await write("actas",id,{codigo:id,fecha:$("#aFec").value,tema:$("#aTem").value.trim(),decisiones:$("#aDec").value.trim(),asistentes:$("#aAsi").value.trim(),enlace:$("#aEnl").value.trim(),autor:C.uid,ts:new Date().toISOString()})){toast("Sesión registrada");$("#side").close()}});
+  })}};
+
+/* ---------- Lote 3: coordinación, difusión, plan de mejora y encuestas ---------- */
+const DIFUSION=[
+ ["Ene 2027","Informe de gestión 2026 y datos abiertos con corte 31-dic-2026","Planeación · Prensa y TIC","Portal y datos.gov.co"],
+ ["31 ene 2027","Plan de Acción 2027 (Ley 1474 de 2011, art. 74)","Planeación","Sede electrónica"],
+ ["Feb–mar 2027","Reporte FURAG vigencia 2026 (fecha según Función Pública)","Planeación","FURAG"],
+ ["30 abr 2027","Cifras del Plan de Desarrollo, corte 31-mar","Planeación · enlaces","Portal (tableros)"],
+ ["[PENDIENTE]","Rendición de cuentas con tablero consolidado","Despacho · Planeación","Audiencia y portal"],
+ ["31 jul 2027","Cifras del Plan de Desarrollo, corte 30-jun","Planeación · enlaces","Portal (tableros)"],
+ ["31 oct 2027","Cifras del Plan de Desarrollo, corte 30-sep","Planeación · enlaces","Portal (tableros)"],
+ ["Dic 2027","Autoevaluación anual y actualización del plan de mejora","Planeación","Portal (Plan de mejora)"],
+ ["31 ene 2028","Cifras del Plan de Desarrollo, corte 31-dic-2027","Planeación · enlaces","Portal y datos.gov.co"]];
+function vMesa(){
+  const L=S.actas.slice().sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+  const I=S.instancias.slice(),t=UI.insT||"todas";
+  const IL=I.filter(x=>t==="todas"||x.ambito===t);
+  return `<div class="head"><div><div class="eyebrow">POL17-05 · Instancias de coordinación</div><h2>Coordinación y <em class="serif">difusión</em></h2><p>Instancias internas y externas en las que la Alcaldía coordina la información estadística, la Mesa Técnica que valida las cifras y el calendario en que se publican.</p></div>${ED()?'<button class="btn primary" id="newActa">Registrar sesión</button>':""}</div>
+  <div><div class="filters"><div class="seg" role="group" aria-label="Ámbito">${[["todas","Todas ("+I.length+")"],["interna","Internas"],["externa","Externas"]].map(([k,l])=>`<button data-it="${k}" aria-pressed="${t===k}">${l}</button>`).join("")}</div><span class="count">${IL.length} instancias</span></div>
+  ${IL.length?`<div class="tablewrap"><table><thead><tr><th>Instancia</th><th>Ámbito</th><th>Tipo</th><th>Periodicidad</th><th>Papel en la información estadística</th><th>Soporte</th></tr></thead><tbody>${IL.map(x=>`<tr><td><b>${h(x.nombre)}</b>${x.entidad?`<span class="sub">${h(x.entidad)}</span>`:""}</td><td><span class="pill ${x.ambito==="interna"?"ok":"info"}">${x.ambito==="interna"?"Interna":"Externa"}</span></td><td>${h(x.tipo)}</td><td>${pend(x.periodicidad)}</td><td>${h(x.papel)}</td><td>${x.enlace?`<a href="${h(x.enlace)}" target="_blank" rel="noopener">${h(x.soporte)}</a>`:pend(x.soporte)}</td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">Las instancias se están cargando.</div>'}</div>
+  <div class="cols">
+    <div class="panel"><h3>Mesa Técnica de Información Estadística</h3>
+      <dl class="ficha"><dt>Acto</dt><dd>Proyecto de decreto ER-SPL-AC-GIE-002 · ${pend("[PENDIENTE: firma]")}</dd><dt>Preside</dt><dd>Secretaría de Planeación</dd><dt>Secretaría técnica</dt><dd>Jefatura de Prensa y TIC</dd><dt>Con voto</dt><dd>Secretarías General y de Gobierno, Hacienda, Obras Públicas, Desarrollo Social, Salud y Educación, Desarrollo Económico y Medio Ambiente</dd><dt>Invitados</dt><dd>Control Interno, Empresa de Servicios Públicos, Imdercultur</dd><dt>Tableros</dt><dd>Aprueba su creación, cambio o retiro y los revisa cada trimestre</dd><dt>Portal</dt><dd>Responsable: Jefatura de Prensa y TIC · Administrador operativo y suplente: ${pend("[PENDIENTE: acta de instalación]")}</dd></dl>
+    </div>
+    <div class="panel"><h3>Calendario de sesiones</h3>
+      <ul class="feed">${[["Instalación","nov 2026"],["Seguimiento T1","feb 2027"],["Seguimiento T2","may 2027"],["Evaluación anual","jun 2027"],["Seguimiento T3","ago 2027"],["Seguimiento T4","nov 2027"]].map(([s,f])=>`<li><time>${f}</time><span>${s}</span></li>`).join("")}</ul>
+      <p class="source">Acta de instalación: ER-SPL-AC-GIE-003.</p></div>
+  </div>
+  <div><h3 style="margin-bottom:10px">Calendario de difusión 2027</h3>
+  <div class="tablewrap"><table><thead><tr><th>Fecha</th><th>Qué se publica</th><th>Responsable</th><th>Canal</th></tr></thead><tbody>${DIFUSION.map(r=>`<tr><td class="num" style="white-space:nowrap">${pend(r[0])}</td><td>${h(r[1])}</td><td>${h(r[2])}</td><td>${h(r[3])}</td></tr>`).join("")}</tbody></table></div>
+  <p class="src">Las cifras se publican dentro de los 30 días siguientes a cada corte, después de la validación de Planeación. Aprobado en la sesión de instalación de la Mesa (proyecto de acta ER-SPL-AC-GIE-003).</p></div>
+  <div><h3 style="margin-bottom:10px">Actas</h3>
+  ${L.length?`<div class="tablewrap"><table><thead><tr><th>Código</th><th>Fecha</th><th>Tema</th><th>Decisiones</th><th></th></tr></thead><tbody>${L.map(a=>`<tr><td class="mono">${h(a.codigo)}</td><td class="num">${h(a.fecha)}</td><td>${h(a.tema)}</td><td>${h(a.decisiones)}</td><td>${a.enlace?`<a href="${h(a.enlace)}" target="_blank" rel="noopener">Ver acta</a>`:""}</td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">Todavía no hay sesiones registradas. La sesión de instalación se registra aquí con su acta ER-SPL-AC-GIE-003.</div>'}</div>`;
+}
+const _mesaAfter=vMesa_after_prev;
+vMesa.after=()=>{document.querySelectorAll("[data-it]").forEach(b=>b.onclick=()=>{UI.insT=b.dataset.it;render()});_mesaAfter()};
+
+/* Plan de mejora */
+const HEST=["Abierta","En ejecución","Cerrada"];
+function hVisibles(){return S.hallazgos.filter(x=>!x.reservado||(LIVE()&&!UI.citizen))}
+function vMejora(){
+  const all=hVisibles(),e=UI.hEst||"todos";
+  const L=all.filter(x=>e==="todos"||x.estado===e);
+  const c=k=>all.filter(x=>x.estado===k).length;
+  const pc=all.length?Math.round(100*c("Cerrada")/all.length):0;
+  return `<div class="head"><div><div class="eyebrow">POL17-08 · Autoevaluación y mejora</div><h2>Plan de <em class="serif">mejora</em></h2><p>Hallazgos de la revisión de documentos, datos e indicadores, con la acción que los corrige y su estado. Se actualiza en cada sesión de la Mesa Técnica y con la autoevaluación anual (ER-SPL-MT-GIE-003).</p></div></div>
+  <div class="kpis" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">${[["Hallazgos",all.length],["Abiertos",c("Abierta")],["En ejecución",c("En ejecución")],["Cerrados",c("Cerrada")+" ("+pc+" %)"]].map(([k,v])=>`<div class="panel" style="padding:14px 16px"><div class="s">${k}</div><div style="font-size:26px;font-weight:700;font-variant-numeric:tabular-nums">${v}</div></div>`).join("")}</div>
+  <div class="filters"><div class="seg" role="group" aria-label="Estado">${[["todos","Todos"]].concat(HEST.map(x=>[x,x])).map(([k,l])=>`<button data-he="${k}" aria-pressed="${e===k}">${l}</button>`).join("")}</div><span class="count">${L.length} hallazgos</span></div>
+  ${L.length?`<div class="tablewrap"><table><thead><tr><th>ID</th><th>Hallazgo</th><th>Fuente</th><th>Acción</th><th>Responsable</th><th>Fecha límite</th><th>Estado</th></tr></thead><tbody>${L.map(x=>`<tr><td class="mono">${h(x.id)}${x.reservado?'<span class="sub">Reservado</span>':""}</td><td>${h(x.hallazgo)}<span class="sub">${h(x.tipo)}</span></td><td>${h(x.fuente)}</td><td>${h(x.accion)}${x.evidencia?`<span class="sub">Evidencia: ${h(x.evidencia)}</span>`:""}</td><td>${h(x.responsable)}</td><td class="num" style="white-space:nowrap">${h(x.limite)}</td><td>${ED()?`<select data-hs="${h(x._id)}" aria-label="Estado de ${h(x.id)}">${opt(HEST,x.estado)}</select>`:`<span class="pill ${x.estado==="Cerrada"?"ok":x.estado==="En ejecución"?"info":"warn"}">${h(x.estado)}</span>`}</td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">'+(all.length?"Ningún hallazgo en este estado.":"El plan de mejora se está cargando.")+'</div>'}
+  <p class="src">Fuente: plan de seguimiento, evaluación y mejora ER-SPL-PL-GIE-002.${LIVE()&&!UI.citizen?" Los hallazgos marcados como reservados (seguridad de la información) no se muestran en la vista ciudadana ni se exportan.":""}</p>`;
+}
+vMejora.after=()=>{
+  document.querySelectorAll("[data-he]").forEach(b=>b.onclick=()=>{UI.hEst=b.dataset.he;render()});
+  document.querySelectorAll("[data-hs]").forEach(s=>s.onchange=async()=>{s.disabled=true;if(await write("hallazgos",s.dataset.hs,{estado:s.value,actualizado:today()},true))toast("Estado actualizado");else s.disabled=false});
+};
+
+/* Encuestas */
+const ENC={
+ demanda:{t:"Encuesta de demanda de información",d:"Cuéntenos qué cifras del municipio necesita. Con sus respuestas priorizamos lo que publicamos.",q:[
+  ["perfil","¿Quién responde?","sel",["Ciudadano","Servidor público de la Alcaldía","Concejal o veedor","Empresa o gremio","Estudiante o investigador","Otra entidad pública"]],
+  ["tema","¿Sobre qué tema necesita información?","sel",["Población","Salud","Educación","Seguridad","Economía y empleo","Presupuesto y contratación","Obras e infraestructura","Medio ambiente","Trámites y PQRDS","Programas sociales","Otro"]],
+  ["detalle","¿Qué dato o cifra necesita exactamente?","txt"],
+  ["uso","¿Para qué la usará?","sel",["Seguimiento o control social","Estudio o investigación","Proyecto o negocio","Trámite o solicitud","Toma de decisiones institucional","Otro"]],
+  ["frecuencia","¿Cada cuánto la necesita?","sel",["Una vez","Mensual","Trimestral","Anual"]],
+  ["formato","¿En qué formato la prefiere?","sel",["Tablero o gráfico","Tabla descargable (CSV o Excel)","Informe en PDF","Mapa"]],
+  ["encontro","¿La encontró hoy en el portal?","sel",["Sí","En parte","No"]]]},
+ satisfaccion:{t:"Encuesta de satisfacción",d:"Califique de 1 (muy malo) a 5 (excelente) su experiencia con el portal.",q:[
+  ["perfil","¿Quién responde?","sel",["Ciudadano","Servidor público de la Alcaldía","Concejal o veedor","Empresa o gremio","Estudiante o investigador","Otra entidad pública"]],
+  ["facilidad","Facilidad para encontrar la información","esc"],
+  ["utilidad","Utilidad de la información para lo que necesitaba","esc"],
+  ["actualidad","Qué tan actualizada estaba la información","esc"],
+  ["claridad","Claridad de tablas, gráficos y explicaciones","esc"],
+  ["general","Satisfacción general","esc"],
+  ["comentario","¿Qué mejoraría?","txt"]]}};
+function vParticipa(){
+  const k=UI.enc||"demanda",E=ENC[k],live=LIVE(),mail=S.config.correoEncuestas;
+  const fld=([id,l,ty,ops])=>ty==="sel"?`<label class="f full">${h(l)}<select id="e_${id}" required>${opt(ops,"","Seleccione")}</select></label>`:ty==="txt"?`<label class="f full">${h(l)}<textarea id="e_${id}" ${id==="detalle"?"required":""} maxlength="600"></textarea></label>`:`<fieldset class="f full" style="border:0;padding:0;margin:0"><legend style="margin-bottom:6px">${h(l)}</legend><div class="seg" role="radiogroup">${[1,2,3,4,5].map(n=>`<label style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;cursor:pointer"><input type="radio" name="e_${id}" value="${n}" required>${n}</label>`).join("")}</div></fieldset>`;
+  return `<div class="head"><div><div class="eyebrow">POL17-03 y POL17-16 · Demanda y satisfacción de usuarios</div><h2>Su opinión <em class="serif">cuenta</em></h2><p>Dos encuestas cortas y anónimas: qué información necesita y qué tan útil le resultó el portal. Los resultados se presentan a la Mesa Técnica cada trimestre.</p></div></div>
+  <div class="filters"><div class="seg" role="group" aria-label="Encuesta">${[["demanda","Demanda de información"],["satisfaccion","Satisfacción"]].map(([a,b])=>`<button data-en="${a}" aria-pressed="${k===a}">${b}</button>`).join("")}</div></div>
+  <form class="grid panel" id="fEnc"><h3 class="full">${h(E.t)}</h3><p class="s full" style="margin:0">${h(E.d)} No pedimos nombre ni documento.</p>${E.q.map(fld).join("")}
+  <div class="full"><button class="btn primary" id="encSend" ${!live&&!mail?"disabled":""}>${live?"Enviar respuesta":"Enviar por correo"}</button>${!live&&!mail?` <span class="s">${pend("[PENDIENTE: correo institucional para recibir encuestas]")}</span>`:""}</div></form>`;
+}
+vParticipa.after=()=>{
+  document.querySelectorAll("[data-en]").forEach(b=>b.onclick=()=>{UI.enc=b.dataset.en;render()});
+  const f=$("#fEnc");if(!f)return;
+  f.addEventListener("submit",async ev=>{ev.preventDefault();const k=UI.enc||"demanda",E=ENC[k],r={};
+    E.q.forEach(([id,l,ty])=>{if(ty==="esc"){const s=f.querySelector(`input[name="e_${id}"]:checked`);r[id]=s?Number(s.value):null}else r[id]=$("#e_"+id).value.trim()});
+    if(LIVE()){$("#encSend").disabled=true;
+      if(await write("aportes",null,{tipo:"encuesta-"+k,respuestas:r,resumen:E.t,estado:"Recibida",ts:new Date().toISOString()})){toast("Gracias. Su respuesta quedó registrada.");UI.enc=k;render()}else $("#encSend").disabled=false}
+    else{const body=E.q.map(([id,l])=>l+": "+(r[id]??"")).join("\n");location.href="mailto:"+encodeURIComponent(S.config.correoEncuestas)+"?subject="+encodeURIComponent(E.t+" – El Rosal en Cifras")+"&body="+encodeURIComponent(body)}});
+};
+function encResumen(){
+  const D=S.aportes.filter(a=>a.tipo==="encuesta-demanda"),Sa=S.aportes.filter(a=>a.tipo==="encuesta-satisfaccion");
+  const avg=k=>{const v=Sa.map(a=>a.respuestas&&a.respuestas[k]).filter(x=>typeof x==="number");return v.length?(v.reduce((a,b)=>a+b,0)/v.length).toFixed(1):"—"};
+  const top={};D.forEach(a=>{const t=a.respuestas&&a.respuestas.tema;if(t)top[t]=(top[t]||0)+1});
+  const T=Object.entries(top).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  return `<div class="cols"><div class="panel"><h3>Demanda de información (${D.length})</h3>${T.length?`<ul class="feed">${T.map(([t,n])=>`<li><time>${n}</time><span>${h(t)}</span></li>`).join("")}</ul>`:'<p class="s">Sin respuestas todavía.</p>'}
+  ${D.length?`<details><summary class="s">Ver solicitudes</summary><ul class="feed">${D.slice().sort((a,b)=>String(b.ts).localeCompare(String(a.ts))).slice(0,30).map(a=>`<li><time>${h(String(a.ts).slice(0,10))}</time><span>${h(a.respuestas.tema||"")}: ${h(a.respuestas.detalle||"")} <span class="sub">${h(a.respuestas.uso||"")} · ${h(a.respuestas.formato||"")} · encontró: ${h(a.respuestas.encontro||"")}</span></span></li>`).join("")}</ul></details>`:""}</div>
+  <div class="panel"><h3>Satisfacción (${Sa.length} respuestas)</h3><dl class="ficha">${[["Facilidad","facilidad"],["Utilidad","utilidad"],["Actualidad","actualidad"],["Claridad","claridad"],["General","general"]].map(([l,k])=>`<dt>${l}</dt><dd>${avg(k)} / 5</dd>`).join("")}</dl></div></div>`;
+}
+
+/* Aportar */
+function vAportar(){
+  if(C.mode!=="vivo")return `<div class="head"><div><h2>Aportar información</h2><p>Esta es la copia publicada del portal, de solo lectura.</p></div></div><div class="note">Los reportes se registran en el portal de trabajo de la Alcaldía. Si usted es enlace de una dependencia, solicite el acceso a la Jefatura de Prensa y TIC.</div>`;
+  const T=[["medicion","Medición de una meta","Valor acumulado al corte de un indicador del Plan"],["documento","Documento o soporte","Proponer un documento nuevo o una nueva versión"],["dato","Conjunto de datos","Base o tabla para publicar en datos abiertos"],["observacion","Observación o error","Una cifra o ficha que debe corregirse"]];
+  const mine=S.aportes.filter(a=>a.autor&&a.autor===C.uid).concat(S.mediciones.filter(m=>m.autor&&m.autor===C.uid).map(m=>({tipo:"medicion",resumen:"Meta "+m.n+" · "+m.periodo+": "+fmt(m.valor),estado:m.estado,ts:m.ts}))).sort((a,b)=>String(b.ts).localeCompare(String(a.ts)));
+  let form="";
+  if(UI.aporteTipo==="medicion")form=medForm(null);
+  else form=`<form class="grid panel" id="fAp"><h3 class="full">${UI.aporteTipo==="documento"?"Proponer documento":UI.aporteTipo==="dato"?"Proponer conjunto de datos":"Reportar observación"}</h3>
+    <label class="f">Dependencia<select id="apDep">${Object.keys(DEPS).filter(k=>k!=="EXT").map(k=>`<option value="${k}">${h(DEPS[k])}</option>`).join("")}</select></label>
+    ${UI.aporteTipo==="documento"?`<label class="f">Serie<select id="apSer">${Object.keys(SERIES).map(k=>`<option value="${k}">${k} · ${h(SERIES[k])}</option>`).join("")}</select></label>`:UI.aporteTipo==="dato"?`<label class="f">Periodicidad<select id="apSer">${opt(["Mensual","Trimestral","Semestral","Anual"],"Trimestral")}</select></label>`:`<label class="f">Referencia (meta, código o fuente)<input id="apSer" placeholder="Ej. meta 45, ER-SPL-MA-GIE-001"></label>`}
+    <label class="f full">${UI.aporteTipo==="observacion"?"Qué está mal y cómo debería quedar":"Título"}<input id="apTit" required></label>
+    <label class="f full">Enlace (Drive u otro)<input id="apEnl" type="url" placeholder="https://"></label>
+    <label class="f full">Descripción<textarea id="apDes"></textarea></label>
+    <div class="full"><button class="btn primary" id="apSave">Enviar a revisión</button></div></form>`;
+  return `<div class="head"><div><div class="eyebrow">Para los enlaces de cada dependencia</div><h2>Aportar información</h2><p>Todo lo que se envía queda en revisión. La Secretaría de Planeación lo valida contra la fuente antes de publicarlo.</p></div></div>
+  <div class="tipos">${T.map(([k,t,d])=>`<button class="tipo" data-t="${k}" aria-pressed="${UI.aporteTipo===k}"><b>${t}</b><span>${d}</span></button>`).join("")}</div>
+  ${form}
+  <div><h3 style="margin-bottom:10px">Mis envíos</h3>${mine.length?`<div class="tablewrap"><table><thead><tr><th>Fecha</th><th>Tipo</th><th>Detalle</th><th>Estado</th></tr></thead><tbody>${mine.map(a=>`<tr><td class="num">${h(String(a.ts).slice(0,10))}</td><td>${h(a.tipo)}</td><td>${h(a.resumen)}</td><td>${estadoPill(a.estado)}</td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">Sus reportes aparecerán aquí con su estado de revisión.</div>'}</div>`;
+}
+vAportar.after=()=>{
+  document.querySelectorAll(".tipo").forEach(b=>b.onclick=()=>{UI.aporteTipo=b.dataset.t;render()});
+  bindMedForm(null);
+  const f=$("#fAp");if(f)f.addEventListener("submit",async e=>{e.preventDefault();$("#apSave").disabled=true;
+    const rec={tipo:UI.aporteTipo,dependencia:$("#apDep").value,detalle:$("#apSer").value,resumen:$("#apTit").value.trim(),enlace:$("#apEnl").value.trim(),descripcion:$("#apDes").value.trim(),autor:C.uid,estado:"Pendiente de revisión",ts:new Date().toISOString()};
+    if(await write("aportes",null,rec)){toast("Enviado a revisión");render()}else $("#apSave").disabled=false});
+};
+
+/* Revisión (administradores) */
+function vRevision(){
+  if(!ED())return '<div class="empty">Esta sección es para la Secretaría de Planeación y la Jefatura de Prensa y TIC.</div>';
+  const meds=S.mediciones.filter(m=>m.estado==="En revisión"),aps=S.aportes.filter(a=>a.estado==="Pendiente de revisión");
+  const ind=n=>S.indicadores.find(i=>i.n==n)||{};
+  return `<div class="head"><div><div class="eyebrow">Validación · procedimiento ER-SPL-PR-GIE-001</div><h2>Revisión</h2><p>Mediciones y propuestas enviadas por los enlaces. Al aprobar, la cifra o el cambio se publica en el portal.</p></div>
+  <button class="btn" id="exp" ${C.dl?"":"disabled data-tip=\"La descarga no está disponible en esta vista\""}>Exportar datos para el subdominio</button></div>
+  <div><h3 style="margin-bottom:10px">Mediciones por validar (${meds.length})</h3>
+  ${meds.length?`<div class="tablewrap"><table><thead><tr><th>Meta</th><th>Corte</th><th>Valor</th><th>Fuente y evidencia</th><th>Reporta</th><th></th></tr></thead><tbody>${meds.map(m=>{const i=ind(m.n);return `<tr><td>${m.n} · ${h(String(i.indicador||"").slice(0,70))}<span class="sub">Meta 2028: ${fmt(i.meta)} ${h(i.unidad)}</span></td><td class="num">${h(m.periodo)}</td><td class="num">${fmt(m.valor)}</td><td>${h(m.fuente)}${m.enlace?` · <a href="${h(m.enlace)}" target="_blank" rel="noopener">evidencia</a>`:""}<span class="sub">${h(m.obs)}</span></td><td>${h(nameOf(m.autor))}</td><td style="white-space:nowrap"><button class="btn sm primary" data-okm="${h(m._id)}">Publicar</button> <button class="btn sm" data-nom="${h(m._id)}">Devolver</button></td></tr>`}).join("")}</tbody></table></div>`:'<div class="empty">No hay mediciones pendientes.</div>'}</div>
+  <div><h3 style="margin-bottom:10px">Encuestas de usuarios</h3>${encResumen()}</div>
+  <div><h3 style="margin-bottom:10px">Propuestas (${aps.length})</h3>
+  ${aps.length?`<div class="tablewrap"><table><thead><tr><th>Fecha</th><th>Tipo</th><th>Detalle</th><th>Reporta</th><th></th></tr></thead><tbody>${aps.map(a=>`<tr><td class="num">${h(String(a.ts).slice(0,10))}</td><td>${h(a.tipo)}</td><td>${h(a.resumen)}<span class="sub">${h(a.descripcion||(a.cambios?Object.entries(a.cambios).map(([k,v])=>k+": "+v).join(" · "):""))}</span>${a.enlace?`<a href="${h(a.enlace)}" target="_blank" rel="noopener">enlace</a>`:""}</td><td>${h(nameOf(a.autor))}</td><td style="white-space:nowrap"><button class="btn sm primary" data-oka="${h(a._id)}">Aprobar</button> <button class="btn sm" data-noa="${h(a._id)}">Rechazar</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">No hay propuestas pendientes.</div>'}</div>
+  <p class="note info">Para publicar el portal en un subdominio: exporte los datos, reemplace el archivo <span class="mono">datos.json</span> junto a <span class="mono">index.html</span> en el servidor y la copia pública mostrará el nuevo corte.</p>`;
+}
+vRevision.after=()=>{
+  document.querySelectorAll("[data-okm]").forEach(b=>b.onclick=async()=>{b.disabled=true;if(await write("mediciones",b.dataset.okm,{estado:"Publicado",validadoPor:C.uid,validadoEn:today()},true))toast("Medición publicada")});
+  document.querySelectorAll("[data-nom]").forEach(b=>b.onclick=async()=>{b.disabled=true;if(await write("mediciones",b.dataset.nom,{estado:"Devuelta",validadoPor:C.uid,validadoEn:today()},true))toast("Medición devuelta al responsable")});
+  document.querySelectorAll("[data-noa]").forEach(b=>b.onclick=async()=>{b.disabled=true;if(await write("aportes",b.dataset.noa,{estado:"Rechazado",validadoEn:today()},true))toast("Propuesta rechazada")});
+  document.querySelectorAll("[data-oka]").forEach(b=>b.onclick=async()=>{b.disabled=true;const a=S.aportes.find(x=>x._id===b.dataset.oka);if(!a)return;
+    if(a.tipo==="fuente"&&a.ref&&a.cambios){if(!await write("fuentes",a.ref,a.cambios,true))return}
+    if(await write("aportes",a._id,{estado:"Aprobado",validadoEn:today()},true))toast(a.tipo==="fuente"?"Fuente actualizada":"Propuesta aprobada. Registre el documento o dato en su sección.")});
+  const e=$("#exp");if(e)e.onclick=async()=>{
+    const strip=a=>a.map(x=>{const y=Object.assign({},x);delete y._id;delete y.autor;delete y.validadoPor;return y});
+    const out={generado:new Date().toISOString(),config:Object.assign({},S.config,{actualizado:today()}),documentos:strip(S.documentos.filter(d=>d.acceso==="Pública")),fuentes:strip(S.fuentes),acciones:strip(S.acciones),pol17:strip(S.pol17),catalogo:{indicadores:{fuente:S.catFuente,items:S.indicadores}},mediciones:strip(S.mediciones.filter(m=>m.estado==="Publicado")),actas:strip(S.actas),aportes:[],hallazgos:strip(S.hallazgos.filter(x=>!x.reservado)),instancias:strip(S.instancias),directorio:S.directorio.map(x=>{const y=Object.assign({},x);delete y._id;delete y.autor;delete y.nombre;delete y.telefono;return y})};
+    try{await C.dl.save({filename:"datos.json",data:JSON.stringify(out)});toast("Archivo datos.json listo")}catch(err){toast(err&&err.code==="declined"?"Descarga cancelada":"No se pudo descargar el archivo")}};
+};
+
+/* Tooltips */
+(function(){const tip=$("#tip");let cur=null;
+  function show(el,x,y){const t=el.getAttribute("data-tip");if(!t)return;cur=el;tip.textContent=t;tip.classList.add("on");place(el,x,y)}
+  function place(el,x,y){const r=el.getBoundingClientRect();const tw=tip.offsetWidth,th=tip.offsetHeight;let px=x!=null?x+12:r.left+r.width/2-tw/2,py=y!=null?y-th-12:r.top-th-8;if(py<8)py=(y!=null?y+16:r.bottom+8);px=Math.max(8,Math.min(px,innerWidth-tw-8));tip.style.left=px+"px";tip.style.top=py+"px"}
+  function hide(){cur=null;tip.classList.remove("on")}
+  document.addEventListener("mouseover",e=>{const el=e.target.closest&&e.target.closest("[data-tip]");if(el&&el!==cur)show(el,e.clientX,e.clientY);else if(!el&&cur)hide()});
+  document.addEventListener("mousemove",e=>{if(cur)place(cur,e.clientX,e.clientY)});
+  document.addEventListener("focusin",e=>{const el=e.target.closest&&e.target.closest("[data-tip]");if(el)show(el);else hide()});
+  document.addEventListener("focusout",hide);document.addEventListener("scroll",hide,true);
+})();
+go(location.hash.slice(1)||"inicio");
+boot();
+</script>
+
+</body></html>
