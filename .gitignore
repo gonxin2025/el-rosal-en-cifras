@@ -1,0 +1,11 @@
+# Nunca subir información clasificada o reservada (Ley 1712 de 2014, art. 18 y 19)
+*reservad*
+*Riesgos*
+*Vulnerabilidad*
+*MSPI*
+*INVENTARIO*
+*.xlsx
+*.docx
+.DS_Store
+Thumbs.db
+.vercel
