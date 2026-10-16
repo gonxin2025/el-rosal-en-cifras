@@ -111,6 +111,11 @@ footer{margin-top:auto;border-top:1px solid var(--line);padding:20px max(24px,en
 .hero{position:relative;overflow:hidden;margin:-32px -24px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--g50),var(--bg) 88%)}
 .hero svg.topo{position:absolute;right:-180px;top:-40px;width:880px;height:560px;pointer-events:none}
 .hero .in{position:relative;padding:72px 48px 64px;max-width:820px}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.hero-fade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 84%,transparent) 36%,color-mix(in srgb,var(--bg) 25%,transparent) 58%,transparent 78%),linear-gradient(180deg,color-mix(in srgb,var(--g50) 55%,transparent),transparent 40%)}
+.hero .in{z-index:2}
+@media (max-width:760px){.hero-fade{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 30%,transparent) 0%,color-mix(in srgb,var(--bg) 88%,transparent) 42%,var(--bg) 100%)}}
+
 .tag{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 6px;border-radius:99px;background:var(--s);border:1px solid var(--line2);font-size:13px;font-weight:500;color:var(--mu)}
 .tag i{font-style:normal;background:var(--btn);color:var(--btn-fg);border-radius:99px;padding:3px 10px;font-size:11px;font-weight:700}
 .hero h1{font-size:clamp(36px,5.2vw,64px);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin-top:24px}
@@ -567,6 +572,101 @@ function topo(){let p='';const n=(a,k)=>Math.sin(a*3+k*.7)*.06+Math.sin(a*5-k*.4
 function pemDocs(){return S.documentos.filter(d=>d.eje==="GIE")}
 function pol17Pct(){const n=S.pol17.length;if(!n)return 0;return S.pol17.filter(p=>p.estado==="Producto elaborado"||p.estado==="Cumplida").length/n}
 
+/* ---------- Fondo animado del inicio: gráficas integradas (canvas, sin dependencias) ---------- */
+window.HeroBG=(()=>{
+  let stopPrev=null;
+  function start(canvas){
+    if(stopPrev)stopPrev();
+    const ctx=canvas.getContext("2d");
+    const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const SPEED=1;
+    let W=0,H=0,C={},parts=[],t=0,last=0,raf=0,running=true;
+    const COS=Math.cos(Math.PI/6),SIN=Math.sin(Math.PI/6);
+    const narrow=()=>W<760;
+    const ease=x=>1-Math.pow(1-Math.min(1,Math.max(0,x)),3);
+    function colors(){const cs=getComputedStyle(document.documentElement);["g900","g800","g700","g600","g500","g300","g100","g50","c1","c2","c3","c4","c6","grid","line2","bg"].forEach(k=>C[k]=cs.getPropertyValue("--"+k).trim());C.dark=document.documentElement.classList.contains("dark")}
+    function resize(){const d=Math.min(window.devicePixelRatio||1,2),r=canvas.getBoundingClientRect();W=r.width;H=r.height;canvas.width=Math.round(W*d);canvas.height=Math.round(H*d);ctx.setTransform(d,0,0,d,0,0);
+      const n=Math.round(Math.min(22,Math.max(8,W*H/46000)));parts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*10,vy:(Math.random()-.5)*10}))}
+    const A=a=>{ctx.globalAlpha=a};
+    // Entrada escalonada de cada gráfica (0–1)
+    const intro=(delay,dur=1.4)=>reduce?1:ease((t-delay)/dur);
+
+    /* 1. Curvas de nivel (identidad del portal) */
+    function contours(){const cx=W*(narrow()?.72:.7)+Math.sin(t*.07)*10,cy=H*(narrow()?.22:.42)+Math.cos(t*.05)*8,m=Math.min(W,H),gap=m*.06;
+      ctx.lineWidth=1;ctx.strokeStyle=C.g500;
+      for(let k=1;k<=12;k++){const base=gap*(k+.4);A(Math.max(.05,.36-k*.026)*intro(0,2));ctx.beginPath();
+        for(let i=0;i<=140;i++){const a=i/140*Math.PI*2,r=base*(1+.13*Math.sin(3*a+t*.18+k*.35)+.07*Math.sin(5*a-t*.13+k*.6)+.04*Math.sin(2*a+t*.09));const x=cx+Math.cos(a)*r*1.25,y=cy+Math.sin(a)*r*.9;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke()}
+      const p=(t%2.6)/2.6;ctx.fillStyle=C.g700;A((1-p)*.35);ctx.beginPath();ctx.arc(cx,cy,6+p*24,0,7);ctx.fill();A(.85);ctx.beginPath();ctx.arc(cx,cy,5,0,7);ctx.fill();A(1)}
+
+    /* 2. Red de puntos */
+    function network(dt){parts.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20});
+      ctx.strokeStyle=C.g500;ctx.lineWidth=.8;for(let i=0;i<parts.length;i++)for(let j=i+1;j<parts.length;j++){const a=parts[i],b=parts[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<120){A((1-d/120)*.16);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}
+      ctx.fillStyle=C.g500;A(.35);parts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,1.6,0,7);ctx.fill()});A(1)}
+
+    /* 3. Columnas 2D con eje y cuadrícula (abajo a la derecha) */
+    function columns(){if(narrow())return;const x0=W*.58,x1=W*.97,base=H*.95,hMax=H*.2,n=12,gw=(x1-x0)/n,bw=gw*.36,k=intro(.4,1.6);
+      ctx.strokeStyle=C.g300;ctx.lineWidth=1;for(let g=1;g<=3;g++){A(.22);ctx.setLineDash([2,5]);ctx.beginPath();ctx.moveTo(x0,base-hMax*g/3);ctx.lineTo(x1,base-hMax*g/3);ctx.stroke()}ctx.setLineDash([]);
+      for(let i=0;i<n;i++){const trend=.35+i*.045,v1=Math.min(1,trend+.18*Math.sin(t*.6+i*.8)),v2=Math.min(1,trend*.72+.14*Math.sin(t*.5+i*1.3+1));
+        const x=x0+i*gw+gw*.12,stg=ease((k*n-i*.6)/2.2);
+        A(.36);ctx.fillStyle=C.g600;rr(x,base-v1*hMax*stg,bw,v1*hMax*stg,3);
+        A(.3);ctx.fillStyle=C.g300;rr(x+bw+2,base-v2*hMax*stg,bw,v2*hMax*stg,3)}
+      A(.5);ctx.strokeStyle=C.g700;ctx.beginPath();ctx.moveTo(x0,base+.5);ctx.lineTo(x1,base+.5);ctx.stroke();A(1)}
+    function rr(x,y,w,h,r){if(h<=0)return;r=Math.min(r,h/2,w/2);ctx.beginPath();ctx.moveTo(x,y+h);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h);ctx.closePath();ctx.fill()}
+
+    /* 4. Línea con área que se dibuja y fluye */
+    function lineChart(){const top=H*.68,amp=H*.08,rv=intro(.2,2.8),xE=W*rv;
+      const f=(x,ph)=>top+amp*1.2-(x/W)*H*.1+amp*(.5*Math.sin(x*.006+t*.35+ph)+.3*Math.sin(x*.014-t*.22+ph*2)+.2*Math.sin(x*.029+t*.5));
+      ctx.setLineDash([4,6]);ctx.lineWidth=1.2;ctx.strokeStyle=C.g300;A(.6);ctx.beginPath();for(let x=0;x<=xE;x+=10){const y=f(x,2.1)+22;x?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();ctx.setLineDash([]);
+      const g=ctx.createLinearGradient(0,top-amp,0,H);g.addColorStop(0,C.g500);g.addColorStop(1,"transparent");A(.12);ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(0,H);for(let x=0;x<=xE;x+=10)ctx.lineTo(x,f(x,0));ctx.lineTo(xE,H);ctx.closePath();ctx.fill();
+      A(.7);ctx.lineWidth=2;ctx.strokeStyle=C.g600;ctx.beginPath();for(let x=0;x<=xE;x+=10){const y=f(x,0);x?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();
+      const st=Math.max(110,W/9);ctx.fillStyle=C.g600;for(let x=st/2;x<xE;x+=st){A(.5);ctx.beginPath();ctx.arc(x,f(x,0),3,0,7);ctx.fill()}
+      const lx=rv<1?xE:W*.86,ly=f(lx,0),p=(t%2)/2;ctx.fillStyle=C.g700;A((1-p)*.3);ctx.beginPath();ctx.arc(lx,ly,5+p*14,0,7);ctx.fill();A(1);ctx.beginPath();ctx.arc(lx,ly,4.5,0,7);ctx.fill()}
+
+    /* 5. Barras isométricas */
+    function poly(pts,fill){ctx.fillStyle=fill;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fill()}
+    function isoBars(){const nx=4,ny=3,s=narrow()?Math.max(11,W*.03):Math.min(34,Math.max(16,Math.min(W,H)*.05)),ox=narrow()?W*.8:W*.83,oy=narrow()?H*.14:H*.4,k=intro(.6,1.8);
+      const P=(x,y,z)=>[ox+(x-y)*COS*s,oy+(x+y)*SIN*s-z*s];A(narrow()?.4:.8);
+      const a=-.45,bx=nx+.15,by=ny+.15,th=.35;poly([P(a,by,0),P(bx,by,0),P(bx,by,-th),P(a,by,-th)],C.g500);poly([P(bx,a,0),P(bx,by,0),P(bx,by,-th),P(bx,a,-th)],C.g700);poly([P(a,a,0),P(bx,a,0),P(bx,by,0),P(a,by,0)],C.dark?C.g100:"#eef5e8");
+      const cells=[];for(let i=0;i<nx;i++)for(let j=0;j<ny;j++)cells.push([i,j]);cells.sort((u,v)=>(u[0]+u[1])-(v[0]+v[1]));const w=.62;
+      cells.forEach(([i,j])=>{const h=Math.max(.3,(1+i*.55-j*.25)+1.1*(.5+.5*Math.sin(t*.55+i*1.7+j*2.9)))*k,x=i+.1,y=j+.1;
+        poly([P(x,y+w,0),P(x+w,y+w,0),P(x+w,y+w,h),P(x,y+w,h)],C.g500);poly([P(x+w,y,0),P(x+w,y+w,0),P(x+w,y+w,h),P(x+w,y,h)],C.g700);poly([P(x,y,h),P(x+w,y,h),P(x+w,y+w,h),P(x,y+w,h)],C.dark?C.g300:"#d9ecc9")});A(1)}
+
+    /* 6. Dona con paleta orgánica */
+    function donut(){if(narrow())return;const r=Math.min(W,H)*.06,cx=W*.94,cy=H*.16,k=intro(.8,1.6);
+      const v=[3+Math.sin(t*.4),2+Math.sin(t*.5+1),1.6+Math.sin(t*.35+2)*.6,1.2],T=v.reduce((a,b)=>a+b,0),cols=[C.c1,C.c3,C.c4,C.c2];let s0=t*.15-Math.PI/2;
+      ctx.lineWidth=r*.34;A(.62);v.forEach((x,i)=>{const e=s0+x/T*Math.PI*2*k;ctx.strokeStyle=cols[i];ctx.beginPath();ctx.arc(cx,cy,r,s0+.03,e-.03);ctx.stroke();s0=e});
+      A(.3);ctx.lineWidth=1;ctx.strokeStyle=C.g500;ctx.beginPath();ctx.arc(cx,cy,r*1.45,0,7);ctx.stroke();A(1)}
+
+    /* 7. Ranking de barras horizontales */
+    function hbars(){if(narrow())return;const x0=W*.6,y0=H*.1,wMax=W*.15,n=5,k=intro(1,1.6);const base=[.92,.74,.6,.46,.33];
+      for(let i=0;i<n;i++){const v=Math.min(1,base[i]+.07*Math.sin(t*.45+i*1.4)),y=y0+i*13,w=wMax*v*ease(k*1.4-i*.12);
+        A(.18);ctx.fillStyle=C.g300;rr2(x0,y,wMax,6);A(.55);ctx.fillStyle=i?C.g500:C.g700;rr2(x0,y,w,6);A(.5);ctx.fillStyle=C.g700;ctx.beginPath();ctx.arc(x0+w,y+3,i?1.8:2.6,0,7);ctx.fill()}A(1)}
+    function rr2(x,y,w,h){if(w<=0)return;const r=h/2;ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.arc(x+w-r,y+r,r,-Math.PI/2,Math.PI/2);ctx.lineTo(x+r,y+h);ctx.arc(x+r,y+r,r,Math.PI/2,Math.PI*1.5);ctx.fill()}
+
+    /* 8. Medidor de avance (arco) */
+    function gauge(){if(narrow())return;const cx=W*.64,cy=H*.6,r=Math.min(W,H)*.075,k=intro(1.1,2),v=(.62+.08*Math.sin(t*.3))*k,a0=Math.PI*.8,a1=Math.PI*2.2;
+      ctx.lineCap="round";ctx.lineWidth=7;A(.22);ctx.strokeStyle=C.g300;ctx.beginPath();ctx.arc(cx,cy,r,a0,a1);ctx.stroke();
+      A(.65);ctx.strokeStyle=C.g600;ctx.beginPath();ctx.arc(cx,cy,r,a0,a0+(a1-a0)*v);ctx.stroke();ctx.lineCap="butt";
+      ctx.lineWidth=1;ctx.strokeStyle=C.g500;for(let i=0;i<=10;i++){const a=a0+(a1-a0)*i/10;A(.35);ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*(r+8),cy+Math.sin(a)*(r+8));ctx.lineTo(cx+Math.cos(a)*(r+(i%5?11:14)),cy+Math.sin(a)*(r+(i%5?11:14)));ctx.stroke()}
+      A(.6);ctx.fillStyle=C.dark?C.g300:C.g700;ctx.font=`600 ${Math.round(r*.42)}px ${getComputedStyle(document.body).fontFamily}`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(Math.round(v*100)+"%",cx,cy);A(1)}
+
+    /* 9. Burbujas (dispersión) */
+    const BUB=[[.86,.66,9,"c1"],[.9,.6,6,"c4"],[.93,.7,12,"c3"],[.88,.75,5,"c2"],[.95,.62,4,"c1"],[.84,.71,7,"c4"]];
+    function bubbles(){if(narrow())return;const k=intro(1.3,1.6);BUB.forEach(([x,y,r,c],i)=>{const px=W*x+Math.sin(t*.4+i)*6,py=H*y+Math.cos(t*.35+i*1.7)*5,rad=r*(1+.15*Math.sin(t*.8+i))*k;A(.28);ctx.fillStyle=C[c];ctx.beginPath();ctx.arc(px,py,rad,0,7);ctx.fill();A(.5);ctx.strokeStyle=C[c];ctx.lineWidth=1;ctx.stroke()});A(1)}
+
+    function draw(dt){ctx.clearRect(0,0,W,H);contours();network(dt);columns();lineChart();gauge();hbars();isoBars();donut();bubbles()}
+    function frame(now){const dt=last?Math.min(.05,(now-last)/1000):0;last=now;t+=dt*SPEED;draw(dt*SPEED);if(running&&!reduce)raf=requestAnimationFrame(frame)}
+    colors();resize();
+    if(reduce){t=8;draw(0)}else raf=requestAnimationFrame(frame);
+    const onR=()=>{resize();if(reduce)draw(0)};window.addEventListener("resize",onR);
+    const io=new IntersectionObserver(e=>{if(reduce)return;if(e[0].isIntersecting){if(!running){running=true;last=0;raf=requestAnimationFrame(frame)}}else{running=false;cancelAnimationFrame(raf)}});io.observe(canvas);
+    const mo=new MutationObserver(()=>{colors();if(reduce)draw(0)});mo.observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
+    const vis=()=>{if(reduce)return;if(document.hidden){running=false;cancelAnimationFrame(raf)}else if(!running){running=true;last=0;raf=requestAnimationFrame(frame)}};document.addEventListener("visibilitychange",vis);
+    stopPrev=()=>{running=false;cancelAnimationFrame(raf);window.removeEventListener("resize",onR);io.disconnect();mo.disconnect();document.removeEventListener("visibilitychange",vis);stopPrev=null};
+  }
+  return {start};
+})();
+
 /* ---------- Inicio ---------- */
 function vInicio(){
   const medidos=S.indicadores.filter(i=>lastMed(i.n)).length;
@@ -585,7 +685,7 @@ function vInicio(){
     ['datos','Datos abiertos','Descarga libre','Catálogo de metas, inventario de fuentes e índice de documentos para descargar y reutilizar en formato abierto.']
   ];
   return `
-  <div class="hero">${topo()}<div class="in">
+  <div class="hero"><canvas class="hero-bg" aria-hidden="true"></canvas><div class="hero-fade" aria-hidden="true"></div><div class="in">
     <span class="tag"><i>Nuevo</i>Plan Estadístico Municipal 2026–2027</span>
     <h1>Las cifras de El Rosal, <em>abiertas</em> para todos.</h1>
     <p class="lead">Consulte el avance del Plan de Desarrollo, los tableros de seguimiento y los documentos que respaldan cada dato publicado por la Alcaldía.</p>
@@ -614,7 +714,7 @@ function vInicio(){
       ${feed.length?'<ul class="feed">'+feed.map(f=>'<li><time>'+h(String(f.t).slice(0,10))+'</time><span>'+h(f.txt)+'</span></li>').join("")+'</ul>':'<div class="empty">Aún no hay mediciones publicadas. La primera aparecerá aquí cuando Planeación apruebe un reporte.</div>'}</div>
   </div>`;
 }
-vInicio.after=()=>{
+vInicio.after=()=>{const hb=document.querySelector(".hero-bg");if(hb&&window.HeroBG)HeroBG.start(hb);
   $("#hform").addEventListener("submit",e=>{e.preventDefault();runSearch($("#hq").value.trim())});
   document.querySelectorAll(".chips [data-q]").forEach(b=>b.onclick=()=>runSearch(b.dataset.q));
   const hover=matchMedia("(hover:hover)").matches;
